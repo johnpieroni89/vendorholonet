@@ -13,4 +13,7 @@ define('SWC_API_CLIENT_ID', '');
 define('SWC_API_CLIENT_SECRET', '');
 define('SWC_API_REDIRECT_URI', '');
 
+// SETTINGS
+define('CONFIG_GLOBAL_ADMIN', 'Cedron Tryonel');
+
 ?>

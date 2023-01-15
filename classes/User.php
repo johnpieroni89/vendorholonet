@@ -42,11 +42,12 @@ class User {
     /**
      * Get User object from handle
      * @param string $handle
+     * @return User
      */
-    static function getUser(string $handle) {
+    static function getUser(string $handle): User {
         $db = new Database();
         $db->connect();
-        return mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM users WHERE handle = '$handle'"));
+        return mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM users WHERE handle = '$handle'"), 'User');
     }
 
     /**

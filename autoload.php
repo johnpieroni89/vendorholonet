@@ -11,6 +11,11 @@ if(isset($_SESSION['handle'])) {
     $user = null;
 }
 
+include('classes/Vendor.php');
+include('classes/Location.php');
+include('classes/Ware.php');
+include('classes/WebService.php');
+
 include('oauth/AuthorizationResult.php');
 include('oauth/ContentTypes.php');
 include('oauth/GrantTypes.php');
