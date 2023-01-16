@@ -21,8 +21,9 @@ class WebService {
         $count = $resp->vendors->{'@attributes'}->{'count'};
         $start = $resp->vendors->{'@attributes'}->{'start'};
 
+        $count = 0;
         while(($start - 1) + $count <= $total) {
-            var_dump($count.' : '.$start.' : '.$total);
+            //var_dump($count.' : '.$start.' : '.$total);
             foreach ($resp->vendors->vendor as $vendor) {
                 $vendor_id = $vendor->{'@attributes'}->{'id'};
                 $vendor_resp = $this->fetch_api(self::VENDOR_API . '/' . $vendor_id);
@@ -49,7 +50,9 @@ class WebService {
             $total = $resp->vendors->{'@attributes'}->{'total'};
             $count = $resp->vendors->{'@attributes'}->{'count'};
             $start = $resp->vendors->{'@attributes'}->{'start'};
+            $count++;
         }
+        echo $count;
     }
 
 
