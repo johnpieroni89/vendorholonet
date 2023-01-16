@@ -18,7 +18,11 @@ class Database {
 	}
 
 	function connect(): void {
-		$this->connection = mysqli_connect($this->host.':'.$this->port, $this->username, $this->password, $this->database);
+        try {
+            $this->connection = mysqli_connect($this->host.':'.$this->port, $this->username, $this->password, $this->database);
+        } catch (mysqli_sql_exception $e) {
+            die("Couldn't make the connection: " . $e->getMessage());
+        }
 	}
 
 	function disconnect(): void {
