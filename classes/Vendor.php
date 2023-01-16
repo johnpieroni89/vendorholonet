@@ -96,12 +96,13 @@ class Vendor {
                         <tbody>';
 
         foreach ($vendors as $vendor) {
+            $wares = Ware::getVendorWares($vendor);
             echo '
                 <tr>
                     <td>'.$vendor->id.'</td>
                     <td>'.$vendor->name.'</td>
                     <td>'.$vendor->owner.'</td>
-                    <td>0</td>
+                    <td>'.count($wares).'</td>
                 </tr>
             ';
         }
