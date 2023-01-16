@@ -31,7 +31,9 @@ class User {
             mysqli_query($db->connection, "INSERT INTO users (handle, access_token, refresh_token) VALUES ('$handle', '$access_token', '$refresh_token')");
         }
 
+        var_dump($handle);
         $user = User::getUser($handle);
+        var_dump($user);
         $_SESSION['id'] = $user->id;
         $_SESSION['handle'] = $user->handle;
         $_SESSION['client_ip'] = $_SERVER['REMOTE_ADDR'];
