@@ -66,4 +66,50 @@ class Vendor {
             mysqli_query($db->connection, "INSERT INTO vendors (id, name, description, owner) VALUES ('$id', '$name', '$description', '$owner')");
         }
     }
+
+    static function printVendorTable($vendors) {
+        echo '
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Vendor Registry<br/>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Owner</th>
+                                <th>Wares</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Owner</th>
+                                <th>Wares</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>';
+
+        foreach ($vendors as $vendor) {
+            echo '
+                <tr>
+                    <td>'.$vendor->id.'</td>
+                    <td>'.$vendor->name.'</td>
+                    <td>'.$vendor->owner.'</td>
+                    <td>0</td>
+                </tr>
+            ';
+        }
+
+        echo '                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        ';
+    }
 }
