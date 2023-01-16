@@ -5,5 +5,6 @@ if(!isset($_SESSION['handle'])) {
     header("Location: ../index.php");
 }
 
-$ws = new WebService();
-$ws->updateVendorList();
+?>
+
+Welcome <?php $_SESSION['handle']; ?>!
