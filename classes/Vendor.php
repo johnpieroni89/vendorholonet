@@ -23,6 +23,7 @@ class Vendor {
     static function getVendor(int $id): ?Vendor {
         $db = new Database();
         $db->connect();
+        $id = mysqli_real_escape_string($db->connection, $id);
         $vendor = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors WHERE id = '$id'"), 'Vendor');
         //$vendor->location = Location::getVendorLocation($vendor->id);
         return $vendor;
@@ -53,6 +54,12 @@ class Vendor {
     static function parseVendor(int $id, string $name, $description, string $owner) {
         $db = new Database();
         $db->connect();
+
+        $id = mysqli_real_escape_string($db->connection, $id);
+        $name = mysqli_real_escape_string($db->connection, $name);
+        $description = mysqli_real_escape_string($db->connection, $description);
+        $owner = mysqli_real_escape_string($db->connection, $owner);
+
         if(self::getVendor($id)) {
             mysqli_query($db->connection, "UPDATE vendors SET name = '$name', description = '$description', owner = '$owner' WHERE id = '$id'");
         } else {

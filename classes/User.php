@@ -47,6 +47,7 @@ class User {
     static function getUser(string $handle): User {
         $db = new Database();
         $db->connect();
+        $handle = mysqli_real_escape_string($db->connection, $handle);
         return mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM users WHERE handle = '$handle'"), 'User');
     }
 
@@ -59,6 +60,7 @@ class User {
     {
         $db = new Database();
         $db->connect();
+        $handle = mysqli_real_escape_string($db->connection, $handle);
 
         if (mysqli_num_rows(mysqli_query($db->connection,"SELECT * FROM users WHERE handle = '".$handle."'"))) {
             return true;

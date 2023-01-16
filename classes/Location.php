@@ -75,6 +75,9 @@ class Location {
         $db = new Database();
         $db->connect();
         $vendor = Vendor::getVendor($vendor_id);
+
+        // escape string
+
         if(! self::getVendorLocation($vendor)) {
             mysqli_query($db->connection, "UPDATE vendors_locations SET container = '$container', sector = '$sector', `system` = '$system', 
                          planet = '$planet', city = '$city', galx = '$galx', galy = '$galy', sysx = '$sysx', sysy = '$sysy', 

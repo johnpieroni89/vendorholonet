@@ -5,7 +5,6 @@ class Ware {
      * @property int $id
      * @property int $vendor_id
      * @property string $type
-     * @property string $type
      * @property int $quantity
      * @property int $price
      * @property string $currency
@@ -40,6 +39,8 @@ class Ware {
     static function getWareById(int $id): Ware {
         $db = new Database();
         $db->connect();
+        $id = mysqli_real_escape_string($db->connection, $id);
+
         $ware = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_wares WHERE id = '$id'"));
         return new Ware($ware);
     }
@@ -58,5 +59,43 @@ class Ware {
             $wareArr[] = Ware::getWareById($wareId);
         }
         return $wareArr;
+    }
+
+    /**
+     * delete all vendor wares
+     * @param int $vendor_id
+     */
+    static function deleteVendorWares(int $vendor_id) {
+        $db = new Database();
+        $db->connect();
+        $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
+        mysqli_query($db->connection, "DELETE FROM vendors_wares WHERE vendor_id = '$vendor_id'");
+    }
+
+    /**
+     * add or update ware from api
+     * @param int $vendor_id
+     * @param string $type
+     * @param int $quantity
+     * @param int $price
+     * @param string $currency
+     * @param string $imgSmall
+     * @param string $imgLarge
+     * @return void
+     */
+    static function parseWare(int $vendor_id, string $type, int $quantity, int $price, string $currency, string $imgSmall, string $imgLarge) {
+        $db = new Database();
+        $db->connect();
+
+        $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
+        $type = mysqli_real_escape_string($db->connection, $type);
+        $quantity = mysqli_real_escape_string($db->connection, $quantity);
+        $price = mysqli_real_escape_string($db->connection, $price);
+        $currency = mysqli_real_escape_string($db->connection, $currency);
+        $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
+        $imgLarge = mysqli_real_escape_string($db->connection, $imgLarge);
+
+        mysqli_query($db->connection, "INSERT INTO vendors_wares (vendor_id, type, quantity, price, currency, imgSmall, imgLarge) 
+                     VALUES ('$vendor_id', '$type', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
     }
 }
