@@ -53,10 +53,11 @@ class Ware {
     static function getVendorWares(Vendor $vendor): array {
         $db = new Database();
         $db->connect();
-        $wareIdList = mysqli_fetch_object(mysqli_query($db->connection, "SELECT id FROM vendors_wares WHERE vendor_id = '$vendor->id'"));
-        $wareArr = [];
-        foreach ($wareIdList as $wareId) {
-            $wareArr[] = Ware::getWareById($wareId);
+        $wareQuery = mysqli_query($db->connection, "SELECT id FROM vendors_wares WHERE vendor_id = '$vendor->id'");
+        $wareArr = array();
+
+        while($row = mysqli_fetch_object($wareQuery)) {
+            $wareArr[] = Ware::getWareById($row->id);
         }
         return $wareArr;
     }
