@@ -21,7 +21,7 @@ class WebService {
         $count = $resp->vendors->{'@attributes'}->{'count'};
         $start = $resp->vendors->{'@attributes'}->{'start'};
 
-        $count = 0;
+        $count_vendors = 0;
         while(($start - 1) + $count <= $total) {
             //var_dump($count.' : '.$start.' : '.$total);
             foreach ($resp->vendors->vendor as $vendor) {
@@ -50,9 +50,9 @@ class WebService {
             $total = $resp->vendors->{'@attributes'}->{'total'};
             $count = $resp->vendors->{'@attributes'}->{'count'};
             $start = $resp->vendors->{'@attributes'}->{'start'};
-            $count++;
+            $count_vendors++;
         }
-        echo $count;
+        echo $count_vendors;
     }
 
 
