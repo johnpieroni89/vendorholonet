@@ -14,6 +14,7 @@ if(isset($_SESSION['handle'])) {
 include('classes/Vendor.php');
 include('classes/Location.php');
 include('classes/Ware.php');
+include('classes/UserInterface.php');
 include('classes/WebService.php');
 
 include('oauth/AuthorizationResult.php');
