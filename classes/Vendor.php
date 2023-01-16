@@ -35,7 +35,7 @@ class Vendor {
     static function getAll() {
         $db = new Database();
         $db->connect();
-        $vendorQuery = mysqli_query($db->connection, "SELECT id FROM vendors ORDER BY id");
+        $vendorQuery = mysqli_query($db->connection, "SELECT id FROM vendors ORDER BY name");
         $vendorArr = array();
         while($row = mysqli_fetch_object($vendorQuery)) {
             $vendorArr[] = Vendor::getVendor($row->id);
