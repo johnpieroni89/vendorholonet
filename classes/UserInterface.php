@@ -58,7 +58,7 @@ class UserInterface
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
-                        <img width="100%" height="100%" src="assets/img/logo-large.png">
+                        <img width="100" height="100" src="assets/img/logo-large.png">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="index.php">
