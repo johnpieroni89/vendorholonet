@@ -36,7 +36,7 @@ class Vendor {
         $db = new Database();
         $db->connect();
         $vendorIdList = mysqli_fetch_object(mysqli_query($db->connection, "SELECT id FROM vendors ORDER BY id"));
-        $vendorArr = [];
+        $vendorArr = array();
         foreach ($vendorIdList as $vendorId) {
             $vendorArr[] = Vendor::getVendor($vendorId);
         }

@@ -564,8 +564,8 @@ if(!isset($_SESSION['handle'])) {
                                             <td>$112,000</td>
                                         </tr>
                                     </tbody>
-                                    <?php var_dump(Vendor::getAll()); ?>
                                 </table>
+                                <?php var_dump(Vendor::getAll()); ?>
                             </div>
                         </div>
                     </div>
