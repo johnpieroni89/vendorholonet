@@ -7,4 +7,4 @@ if(!isset($_SESSION['handle'])) {
 
 ?>
 
-Welcome <?php $_SESSION['handle']; ?>!
+Welcome <?php echo $_SESSION['handle']; ?>!
