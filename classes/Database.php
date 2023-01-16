@@ -3,6 +3,7 @@
 
 class Database {
     public $host;
+    public $port;
     private $username;
     private $password;
     private $database;
@@ -10,13 +11,14 @@ class Database {
 	
 	function __construct() {
 	    $this->host = MYSQL_DB_HOST;
+	    $this->port = MYSQL_DB_PORT;
 	    $this->database = MYSQL_DB_DATABASE;
 	    $this->username = MYSQL_DB_USERNAME;
 	    $this->password = MYSQL_DB_PASSWORD;
 	}
 
 	function connect(): void {
-		$this->connection = mysqli_connect($this->host, $this->username, $this->password, $this->database);
+		$this->connection = mysqli_connect($this->host.':'.$this->port, $this->username, $this->password, $this->database);
 	}
 
 	function disconnect(): void {

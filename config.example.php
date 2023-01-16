@@ -4,6 +4,7 @@
 
 // MySQL Connection
 define('MYSQL_DB_HOST', 'localhost');
+define('MYSQL_DB_PORT', 3306);
 define('MYSQL_DB_DATABASE', '');
 define('MYSQL_DB_USERNAME', '');
 define('MYSQL_DB_PASSWORD', '');
