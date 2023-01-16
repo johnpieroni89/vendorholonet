@@ -32,10 +32,12 @@ class Vendor {
     /**
      * @return Vendor[]
      */
-    static function getAll(): array {
+    static function getAll() {
         $db = new Database();
         $db->connect();
         $vendorIdList = mysqli_fetch_object(mysqli_query($db->connection, "SELECT id FROM vendors ORDER BY id"));
+        var_dump($vendorIdList);
+        return
         $vendorArr = array();
         foreach ($vendorIdList as $vendorId) {
             $vendorArr[] = Vendor::getVendor($vendorId);
