@@ -59,6 +59,7 @@ class Vendor {
         $name = mysqli_real_escape_string($db->connection, $name);
         $description = mysqli_real_escape_string($db->connection, $description);
         $owner = mysqli_real_escape_string($db->connection, $owner);
+        str_replace('&amp;', '&', $name);
 
         if(self::getVendor($id)) {
             mysqli_query($db->connection, "UPDATE vendors SET name = '$name', description = '$description', owner = '$owner' WHERE id = '$id'");
