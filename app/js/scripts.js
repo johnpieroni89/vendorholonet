@@ -33,8 +33,11 @@ $(document).ready(function () {
             [10, 25, 50, 'All'],
         ],
         columns: [
+            { data: 'id' },
+            { data: 'name' },
+            { data: 'owner' },
             {
-                data: 'price',
+                data: 'wares',
                 render: DataTable.render.number()
             }
         ]
