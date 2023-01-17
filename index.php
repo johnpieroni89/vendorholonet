@@ -14,7 +14,7 @@ if(isset($_SESSION['handle'])) {
 ?>
 <body style="background-color: #6c757d">
     <!-- Login Container -->
-    <div class="d-flex align-items-center" style="width: 100%; height: 100%; margin: auto;">
+    <div class="d-flex align-items-center" style="width: 100%; height: 100%; margin: auto; border: 1px solid red;">
         <!-- Login Header -->
         <img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
 
