@@ -155,7 +155,7 @@ class Vendor {
         foreach ($wares as $ware) {
             echo '
                 <div class="col card p-0">
-                    <div class="card-header bg-light w-100" style="text-align: center;"><h6>'.$ware->type.'<br/><img src="'.$ware->imgSmall.'"></h6></div>
+                    <div class="card-header bg-light w-100" style="text-align: center; height: 170px;"><h6>'.$ware->type.'<br/><img src="'.$ware->imgSmall.'"></h6></div>
                     <div class="card-body w-100">
                         <table class="table table-striped table-sm table-bordered">
                             <tr><td>Price:</td><td>'.number_format($ware->price).'</td></tr>
