@@ -30,8 +30,8 @@ if(!isset($_SESSION['handle'])) {
     <script>
         <?php
             $search = '';
-            if(isset($_GET['owner'])) {
-                $search = $_GET['owner'];
+            if(isset($_GET['search'])) {
+                $search = $_GET['search'];
             }
         ?>
         $(document).ready(function () {
