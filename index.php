@@ -29,4 +29,6 @@ if(isset($_SESSION['handle'])) {
     </div>
 </body>
 
+<?php UserInterface::printScripts(); ?>
+
 </html>
