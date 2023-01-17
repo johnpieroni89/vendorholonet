@@ -33,13 +33,10 @@ $(document).ready(function () {
             [10, 25, 50, 'All'],
         ],
         columns: [
-            { data: 'id' },
+            { data: 'id', render: DataTable.render.number() },
             { data: 'name' },
             { data: 'owner' },
-            {
-                data: 'wares',
-                render: DataTable.render.number(null, null, 0)
-            }
+            { data: 'wares', render: DataTable.render.number() }
         ]
     });
 });

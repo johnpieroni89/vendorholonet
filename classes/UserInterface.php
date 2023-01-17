@@ -66,6 +66,10 @@ class UserInterface
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
+                            <a class="nav-link" href="malls.php" disabled>
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Malls
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -97,8 +101,9 @@ class UserInterface
     static function printScripts() {
         echo '
             <!-- Bootstrap 5 JS --> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-            <!-- JQuery 3 + DataTables JS --> <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/af-2.5.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/kt-2.8.0/r-2.4.0/rg-1.3.0/rr-1.3.1/sc-2.0.7/sb-1.4.0/sp-2.1.0/sl-1.5.0/sr-1.2.0/datatables.min.js"></script>
+            <!-- JQuery 3 + DataTables JS --> <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/af-2.5.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/kt-2.8.0/r-2.4.0/rg-1.3.0/rr-1.3.1/sc-2.0.7/sb-1.4.0/sp-2.1.0/sl-1.5.0/sr-1.2.0/datatables.min.js"></script> <!-- https://datatables.net/examples/advanced_init/dom_multiple_elements.html -->
             <!-- Default JS --> <script type="text/javascript" src="js/scripts.js"></script>
+            <!-- Chart.js --> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> <!-- https://www.w3schools.com/js/js_graphics_chartjs.asp -->
         ';
     }
 
