@@ -134,13 +134,13 @@ class Vendor {
                         <div class="card-footer bg-secondary"><button>Message</button></div>
                     </div>
                     
-                    <div class="card col-sm-4">
+                    <div class="card col-sm-2 offset-1">
                         <div class="card-header bg-primary">Metrics</div>
                         <div class="card-body">blah</div>
                         <div class="card-footer bg-secondary"></div>
                     </div>
                     
-                    <div class="card col-sm-4">
+                    <div class="card col-sm-4 offset-1">
                         <div class="card-header bg-primary">Location</div>
                         <div class="card-body">blah</div>
                         <div class="card-footer bg-secondary"><button>Travel</button></div>
