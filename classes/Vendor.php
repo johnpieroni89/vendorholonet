@@ -83,6 +83,7 @@ class Vendor {
                                 <th>Name</th>
                                 <th>Owner</th>
                                 <th>Wares</th>
+                                <th>Distance</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -91,6 +92,7 @@ class Vendor {
                                 <th>Name</th>
                                 <th>Owner</th>
                                 <th>Wares</th>
+                                <th>Distance</th>
                             </tr>
                         </tfoot>
                         <tbody>';
@@ -103,6 +105,7 @@ class Vendor {
                     <td>'.$vendor->name.'</td>
                     <td>'.$vendor->owner.'</td>
                     <td>'.count($wares).'</td>
+                    <td>0</td>
                 </tr>
             ';
         }

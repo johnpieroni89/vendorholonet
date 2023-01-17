@@ -37,6 +37,7 @@ $(document).ready(function () {
             { data: 'name' },
             { data: 'owner' },
             { data: 'wares', render: DataTable.render.number() }
+            { data: 'distance', render: DataTable.render.number() }
         ]
     });
 });
