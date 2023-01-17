@@ -16,7 +16,7 @@ if(isset($_SESSION['handle'])) {
     <!-- Login Container -->
     <div class="d-flex align-items-center" style="margin: auto;">
         <!-- Login Header -->
-        <center><img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"></center>
+        <img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
 
         <!-- Login Block -->
         <div class="block">
