@@ -16,6 +16,7 @@ class WebService {
 
     function updateVendorList()
     {
+        Vendor::deleteAll();
         $resp = $this->fetch_api(self::VENDOR_API);
         $total = $resp->vendors->{'@attributes'}->{'total'};
         $count = $resp->vendors->{'@attributes'}->{'count'};

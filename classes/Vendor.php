@@ -43,6 +43,12 @@ class Vendor {
         return $vendorArr;
     }
 
+    static function deleteAll() {
+        $db = new Database();
+        $db->connect();
+        mysqli_query($db->connection, "DELETE * FROM vendors");
+    }
+
     /**
      * add or update vendor from api
      * @param int $id
