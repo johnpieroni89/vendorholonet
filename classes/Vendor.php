@@ -102,7 +102,7 @@ class Vendor {
             echo '
                 <tr>
                     <td>'.$vendor->id.'</td>
-                    <a href="#"><td>'.$vendor->name.'</td></a>
+                    <td>'.$vendor->name.'</td>
                     <td>'.$vendor->owner.'</td>
                     <td>'.count($wares).'</td>
                     <td>0</td>
