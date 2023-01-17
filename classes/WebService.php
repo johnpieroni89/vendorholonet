@@ -1,7 +1,7 @@
 <?php
 
 class WebService {
-    const VENDOR_API = 'http://www.swcombine.com/ws/v2.0/market/vendors';
+    const VENDOR_API = 'http://www.swcombine.com/ws/v2.0/market/vendors.json';
 
     /**
      * return data from swc api endpoint
@@ -9,8 +9,7 @@ class WebService {
      * @return false|SimpleXMLElement
      */
     function fetch_api(string $url) {
-        $result = simplexml_load_string(file_get_contents($url));
-        $result = json_encode($result);
+        $result = file_get_contents($url);
         return json_decode($result);
     }
 
@@ -25,7 +24,7 @@ class WebService {
         while(($start - 1) + $count <= $total) {
             foreach ($resp->vendors->vendor as $vendor) {
                 $vendor_id = $vendor->{'@attributes'}->{'id'};
-                $vendor_resp = $this->fetch_api(self::VENDOR_API . '/' . $vendor_id);
+                $vendor_resp = $this->fetch_api(self::VENDOR_API . '/' . $vendor_id .'.json');
                 $vendor_data = $vendor_resp->vendor;
 
                 if (is_string($vendor_data->{'description'})) {
@@ -45,7 +44,7 @@ class WebService {
                 }
             }
 
-            $resp = $this->fetch_api(self::VENDOR_API.'?start_index='.($start + 50));
+            $resp = $this->fetch_api(self::VENDOR_API.'.json?start_index='.($start + 50));
             $total = $resp->vendors->{'@attributes'}->{'total'};
             $count = $resp->vendors->{'@attributes'}->{'count'};
             $start = $resp->vendors->{'@attributes'}->{'start'};
