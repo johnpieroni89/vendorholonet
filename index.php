@@ -19,7 +19,7 @@ if(isset($_SESSION['handle'])) {
         <div style="text-align: center">
             <h1>Vendor Holonet</h1><br/>
             <!-- Login Header -->
-            <img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
+            <img class="img-responsive" style="display: inline; width:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
 
             <!-- Login Form -->
             <div style="text-align: center;">
