@@ -51,6 +51,10 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'wares', render: DataTable.render.number() },
                     { data: 'distance', render: DataTable.render.number() }
                 ],
+                columnDefs: [{
+                    targets: 3,
+                    className: 'dt-body-right'
+                }],
                 search: { search: '<?php echo $search; ?>' }
             });
         });
