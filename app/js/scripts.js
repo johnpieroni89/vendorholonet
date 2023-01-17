@@ -32,5 +32,11 @@ $(document).ready(function () {
             [10, 25, 50, -1],
             [10, 25, 50, 'All'],
         ],
+        columns: [
+            {
+                data: 'price',
+                render: DataTable.render.number()
+            }
+        ]
     });
 });
