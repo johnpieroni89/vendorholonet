@@ -1,3 +1,4 @@
+<html>
 <?php
 
 // always logout if visiting this public-facing page
@@ -11,20 +12,21 @@ if(isset($_SESSION['handle'])) {
 }
 
 ?>
+<body>
+    <!-- Login Container -->
+    <div>
+        <!-- Login Header -->
+        <center><img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"></center>
 
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-        <!-- Tabs Titles -->
-
-        <!-- Icon -->
-        <div class="fadeIn first">
-            <img src="app/assets/img/logo-large.png" id="logo" alt="Vendor Holonet" />
-        </div>
-
-        <!-- Login Form -->
-        <div class="d-grid gap-2">
-            <a href="oauth/index.php"><button type="button" class="btn btn-lg btn-secondary">Login</button></a>
+        <!-- Login Block -->
+        <div class="block">
+            <!-- Login Form -->
+            <div style="text-align: center;">
+                <a href="oauth/index.php"><button type="button" class="btn btn-lg btn-secondary"><i class="fas fa-sign-in-alt"></i> Sign In</button></a>
+            </div>
         </div>
 
     </div>
-</div>
+</body>
+
+</html>
