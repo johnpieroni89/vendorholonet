@@ -24,3 +24,7 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+$(document).ready(function () {
+    $('#vendorTable').DataTable();
+});
