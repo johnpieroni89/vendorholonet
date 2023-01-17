@@ -125,6 +125,26 @@ class Vendor {
     }
 
     static function printVendorProfile(Vendor $vendor) {
-        echo '<div style="border: 1px solid black; width: 100%;">Profiles coming soon!</div>';
+        echo '
+            <div class="container-fluid">
+                <div class="card col-sm-4">
+                    <div class="card-header bg-primary">Vendor</div>
+                    <div class="card-body">blah</div>
+                    <div class="card-footer bg-secondary"><button>Message</button></div>
+                </div>
+                
+                <div class="card col-sm-4">
+                    <div class="card-header bg-primary">Metrics</div>
+                    <div class="card-body">blah</div>
+                    <div class="card-footer bg-secondary"></div>
+                </div>
+                
+                <div class="card col-sm-4">
+                    <div class="card-header bg-primary">Location</div>
+                    <div class="card-body">blah</div>
+                    <div class="card-footer bg-secondary"><button>Travel</button></div>
+                </div>
+            </div>
+        ';
     }
 }
