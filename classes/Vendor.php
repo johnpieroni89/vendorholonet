@@ -76,10 +76,10 @@ class Vendor {
 
     static function printVendorTable($vendors) {
         echo '
-            <div class="card mb-4" style="overflow-x: scroll;">
+            <div class="card mb-4" style="overflow-x: scroll; overflow: hidden;">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Vendor Registry<br/>
+                    Vendor Registry
                 </div>
                 <div class="card-body">
                     <table id="vendorTable" class="table table-sm table-striped table-responsive table-hover table-bordered">
