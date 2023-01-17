@@ -129,7 +129,7 @@ class Vendor {
             <div class="container-fluid">
                 <div class="row">
                     <div class="card col-sm-4">
-                        <div class="card-header bg-primary">Vendor</div>
+                        <div class="card-header bg-primary flex-fill">Vendor</div>
                         <div class="card-body">blah</div>
                         <div class="card-footer bg-secondary"><button>Message</button></div>
                     </div>
