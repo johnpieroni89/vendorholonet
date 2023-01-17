@@ -12,7 +12,7 @@ if(isset($_SESSION['handle'])) {
 }
 
 ?>
-<body style="background-color: antiquewhite">
+<body style="background-color: #ecedee">
     <!-- Login Container -->
     <div class="d-flex align-items-center justify-content-center" style="width: 100%; height: 100%; margin: auto;">
         <!-- Login Block -->
