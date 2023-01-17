@@ -38,7 +38,7 @@ $(document).ready(function () {
             { data: 'owner' },
             {
                 data: 'wares',
-                render: DataTable.render.number()
+                render: DataTable.render.number(null, null, 0)
             }
         ]
     });
