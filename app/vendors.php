@@ -36,6 +36,7 @@ if(!isset($_SESSION['handle'])) {
         ?>
         $(document).ready(function () {
             $('#vendorTable').DataTable({
+                searchable: true,
                 pageLength: 50,
                 lengthMenu: [
                     [10, 25, 50, -1],
@@ -48,7 +49,7 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'wares', render: DataTable.render.number() }
                     { data: 'distance', render: DataTable.render.number() }
                 ],
-                search: { search: '<?php echo $search; ?>' }
+                search: { search: 'Blue Star' }
             });
         });
     </script>
