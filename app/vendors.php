@@ -48,7 +48,7 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'wares', render: DataTable.render.number() }
                     { data: 'distance', render: DataTable.render.number() }
                 ],
-                search: { search: <?php echo $search; ?> }
+                search: { search: '<?php echo $search; ?>' }
             });
         });
     </script>
