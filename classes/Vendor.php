@@ -128,16 +128,16 @@ class Vendor {
         echo '
             <div class="container-fluid">
                 <div class="row">
-                    <div class="card col-sm-5">
+                    <div class="card col-sm-5 offset-1">
                         <div class="card-header bg-primary">Vendor</div>
                         <div class="card-body">blah</div>
-                        <div class="card-footer bg-secondary align-items-center"><button class="btn">Message</button></div>
+                        <div class="card-footer"><center><button class="btn">Message</button></center></div>
                     </div>
                     
-                    <div class="card col-sm-5 offset-2">
+                    <div class="card col-sm-4 offset-1">
                         <div class="card-header bg-primary">Location</div>
                         <div class="card-body">blah</div>
-                        <div class="card-footer bg-secondary align-items-center"><button class="btn">Travel</button></div>
+                        <div class="card-footer"><center><button class="btn">Travel</button></center></div>
                     </div>
                 </div>
             </div>
