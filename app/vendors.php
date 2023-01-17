@@ -49,7 +49,7 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'wares', render: DataTable.render.number() },
                     { data: 'distance', render: DataTable.render.number() }
                 ],
-                search: { search: 'Blue Star' }
+                search: { search: '<?php echo $search; ?>' }
             });
         });
     </script>
