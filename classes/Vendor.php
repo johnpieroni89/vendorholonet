@@ -156,7 +156,12 @@ class Vendor {
             echo '
                 <div class="col card p-0">
                     <div class="card-header bg-light w-100" style="text-align: center;"><h6>'.$ware->type.'<br/><img src="'.$ware->imgSmall.'"></h6></div>
-                    <div class="card-body w-100"><p>Price: '.$ware->price.' '.$ware->currency.'</p></div>
+                    <div class="card-body w-100">
+                        <table class="table table-striped table-sm table-bordered">
+                            <tr><td>Price:</td><td>'.number_format($ware->price).'</td></tr>
+                            <tr><td>Qty:</td><td>'.number_format($ware->quantity).'</td></tr>
+                        </table>
+                    </div>
                     <div class="card-footer d-grid w-100" style="text-align: center;"></div>
                 </div>
             ';
