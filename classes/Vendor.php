@@ -125,6 +125,6 @@ class Vendor {
     }
 
     static function printVendorProfile(Vendor $vendor) {
-
+        echo '<div style="border: 1px solid black; width: 100%;">Profiles coming soon!</div>';
     }
 }
