@@ -129,13 +129,17 @@ class Vendor {
             <div class="container-fluid">
                 <div class="row">
                     <div class="card col-sm-5 offset-1">
-                        <div class="card-header bg-light" style="text-align: center;">Vendor</div>
-                        <div class="card-body">blah</div>
+                        <div class="card-header bg-light" style="text-align: center;"><h2>Vendor</h2></div>
+                        <div class="card-body">
+                            <p><b>Shop Name</b>: '.$vendor->name.'</p>
+                            <p><b>Shop Description</b>: '.$vendor->description.'</p>
+                            <p><b>Owner</b>: (work in progress)</p>
+                        </div>
                         <div class="card-footer d-grid" style="text-align: center;"><button class="btn btn-primary btn-lg">Message</button></div>
                     </div>
                     
                     <div class="card col-sm-4 offset-1">
-                        <div class="card-header bg-light">Location</div>
+                        <div class="card-header bg-light" style="text-align: center;"><h2>Location</h2></div>
                         <div class="card-body">blah</div>
                         <div class="card-footer d-grid" style="text-align: center;"><button class="btn btn-primary btn-lg">Travel</button></div>
                     </div>
