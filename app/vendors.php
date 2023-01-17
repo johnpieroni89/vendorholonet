@@ -44,13 +44,17 @@ if(!isset($_SESSION['handle'])) {
                 ],
                 columns: [
                     { data: 'id', render: DataTable.render.number() },
-                    { data: 'name' render: function (row, type, val, meta) {
-                           return '<a href="vendor_profile.php?id=' + row.id + '">' + row.name + '</a>';
-                        } },
+                    { data: 'name' },
                     { data: 'owner' },
                     { data: 'wares', render: DataTable.render.number() },
                     { data: 'distance', render: DataTable.render.number() }
                 ],
+                columnDefs: [{
+                    targets: 1,
+                    data: function (row, type, val, meta) {
+                        return '<a href="vendor_profile.php?id=' + row.id + '">' + row.name + '</a>';
+                    }
+                }],
                 search: { search: '<?php echo $search; ?>' }
             });
         });
