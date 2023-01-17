@@ -148,9 +148,22 @@ class Vendor {
             <hr/>
             
             <div class="container-fluid">
+                <div class="row">
         ';
 
+        $wares = Ware::getVendorWares($vendor);
+        foreach ($wares as $ware) {
+            echo '
+                <div class="col card p-0">
+                    <div class="card-header bg-light w-100" style="text-align: center;"><h6>'.$ware->type.'<br/><img src="'.$ware->imgSmall.'"></h6></div>
+                    <div class="card-body w-100"><p>Price: '.$ware->price.' '.$ware->currency.'</p></div>
+                    <div class="card-footer d-grid w-100" style="text-align: center;"></div>
+                </div>
+            ';
+        }
+
         echo '
+                </div>
             </div>
         ';
     }
