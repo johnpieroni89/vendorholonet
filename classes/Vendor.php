@@ -154,7 +154,7 @@ class Vendor {
         $wares = Ware::getVendorWares($vendor);
         foreach ($wares as $ware) {
             echo '
-                <div class="col card p-0">
+                <div class="col card p-0 m-4">
                     <div class="card-header bg-light w-100" style="text-align: center; height: 60px;"><h6>'.$ware->type.'</h6></div>
                     <div class="card-body w-100" style="text-align: center;"><img src="'.$ware->imgSmall.'"></div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
