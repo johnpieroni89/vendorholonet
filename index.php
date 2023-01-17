@@ -19,7 +19,7 @@ if(isset($_SESSION['handle'])) {
         <img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
 
         <!-- Login Block -->
-        <div class="block">
+        <div class="block" style="border: 1px solid red;">
             <!-- Login Form -->
             <div style="text-align: center;">
                 <a href="oauth/index.php"><button type="button" class="btn btn-lg btn-primary"><i class="fas fa-sign-in-alt"></i> Sign In</button></a>
