@@ -14,12 +14,13 @@ if(isset($_SESSION['handle'])) {
 ?>
 <body style="background-color: #6c757d">
     <!-- Login Container -->
-    <div class="d-flex align-items-center justify-content-center" style="width: 100%; height: 100%; margin: auto; border: 1px solid red;">
-        <!-- Login Header -->
-        <img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
-
+    <div class="d-flex align-items-center justify-content-center" style="width: 100%; height: 100%; margin: auto;">
         <!-- Login Block -->
         <div class="">
+            <h1>Vendor Holonet</h1><br/>
+            <!-- Login Header -->
+            <img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"><br/>
+
             <!-- Login Form -->
             <div style="text-align: center;">
                 <a href="oauth/index.php"><button type="button" class="btn btn-lg btn-primary"><i class="fas fa-sign-in-alt"></i> Sign In</button></a>
