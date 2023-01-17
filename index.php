@@ -2,9 +2,7 @@
 
 include('autoload.php');
 UserInterface::printHead();
-if(!isset($_SESSION['handle'])) {
-    header("Location: oauth/index.php");
-} else {
+if(isset($_SESSION['handle'])) {
     header("Location: app/index.php");
 }
 
