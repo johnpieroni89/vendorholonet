@@ -45,7 +45,7 @@ if(!isset($_SESSION['handle'])) {
                 columns: [
                     { data: 'id', render: DataTable.render.number() },
                     { data: 'name', render: function (data, type, row) {
-                            return '<a href="vendor_profile.php?id=' + row[0] + '">' + data + '</a>';
+                            return '<a href="vendor_profile.php?id=' + row.id + '">' + data + '</a>';
                         } },
                     { data: 'owner' },
                     { data: 'wares', render: DataTable.render.number() },
