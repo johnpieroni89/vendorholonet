@@ -12,9 +12,9 @@ if(isset($_SESSION['handle'])) {
 }
 
 ?>
-<body>
+<body style="background-color: #6c757d">
     <!-- Login Container -->
-    <div>
+    <div class="d-flex align-items-center" style="margin: auto;">
         <!-- Login Header -->
         <center><img class="img-responsive" style="max-height:200px; margin-bottom:50px;" src="app/assets/img/logo-large.png" alt="Vendor Holonet"></center>
 
@@ -22,7 +22,7 @@ if(isset($_SESSION['handle'])) {
         <div class="block">
             <!-- Login Form -->
             <div style="text-align: center;">
-                <a href="oauth/index.php"><button type="button" class="btn btn-lg btn-secondary"><i class="fas fa-sign-in-alt"></i> Sign In</button></a>
+                <a href="oauth/index.php"><button type="button" class="btn btn-lg btn-primary"><i class="fas fa-sign-in-alt"></i> Sign In</button></a>
             </div>
         </div>
 
