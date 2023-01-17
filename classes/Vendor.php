@@ -129,15 +129,15 @@ class Vendor {
             <div class="container-fluid">
                 <div class="row">
                     <div class="card col-sm-5 offset-1">
-                        <div class="card-header bg-light">Vendor</div>
+                        <div class="card-header bg-light" style="text-align: center;">Vendor</div>
                         <div class="card-body">blah</div>
-                        <div class="card-footer"><center><button class="btn btn-primary">Message</button></center></div>
+                        <div class="card-footer d-grid" style="text-align: center;"><button class="btn btn-primary btn-lg">Message</button></div>
                     </div>
                     
                     <div class="card col-sm-4 offset-1">
                         <div class="card-header bg-light">Location</div>
                         <div class="card-body">blah</div>
-                        <div class="card-footer"><center><button class="btn btn-primary">Travel</button></center></div>
+                        <div class="card-footer d-grid" style="text-align: center;"><button class="btn btn-primary btn-lg">Travel</button></div>
                     </div>
                 </div>
             </div>
