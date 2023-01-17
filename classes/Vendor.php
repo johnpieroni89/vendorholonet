@@ -123,4 +123,8 @@ class Vendor {
             </div>
         ';
     }
+
+    static function printVendorProfile(Vendor $vendor) {
+
+    }
 }
