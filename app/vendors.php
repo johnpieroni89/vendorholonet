@@ -44,17 +44,13 @@ if(!isset($_SESSION['handle'])) {
                 ],
                 columns: [
                     { data: 'id', render: DataTable.render.number() },
-                    { data: 'name' },
+                    { data: 'name', render: function (data, type, row) {
+                            return 'test';
+                        } },
                     { data: 'owner' },
                     { data: 'wares', render: DataTable.render.number() },
                     { data: 'distance', render: DataTable.render.number() }
                 ],
-                columnDefs: [{
-                    targets: 1,
-                    data: function (row, type, val, meta) {
-                        return 'test';
-                    }
-                }],
                 search: { search: '<?php echo $search; ?>' }
             });
         });
