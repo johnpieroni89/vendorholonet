@@ -109,7 +109,7 @@ class Vendor {
                 <tr>
                     <td>'.$vendor->id.'</td>
                     <td>'.$vendor->name.'</td>
-                    <td>'.$vendor->owner.'</td>
+                    <td>Name of vendor owner soon!</td>
                     <td>'.count($wares).'</td>
                     <td>0</td>
                 </tr>
