@@ -82,7 +82,7 @@ class Vendor {
                     Vendor Registry<br/>
                 </div>
                 <div class="card-body">
-                    <table id="vendorTable" class="table table-sm table-striped table-responsive table-hover">
+                    <table id="vendorTable" class="table table-sm table-striped table-responsive table-hover cell-border">
                         <thead>
                             <tr>
                                 <th>ID</th>
