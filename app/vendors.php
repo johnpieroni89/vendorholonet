@@ -52,7 +52,7 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'distance', render: DataTable.render.number() }
                 ],
                 columnDefs: [{
-                    targets: 3,
+                    targets: [3, 4],
                     className: 'dt-body-right'
                 }],
                 search: { search: '<?php echo $search; ?>' }
