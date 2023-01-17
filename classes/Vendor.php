@@ -160,7 +160,7 @@ class Vendor {
                     <div class="card-footer d-grid w-100" style="text-align: center;">
                         <table class="table table-striped table-sm table-bordered">
                             <tr><td>Price:</td><td style="text-align: right; padding-right: 10px;">'.number_format($ware->price).'</td></tr>
-                            <tr><td>Qty:</td><td>'.number_format($ware->quantity).'</td></tr>
+                            <tr><td>Qty:</td><td style="text-align: right; padding-right: 10px;">'.number_format($ware->quantity).'</td></tr>
                         </table>
                     </div>
                 </div>
