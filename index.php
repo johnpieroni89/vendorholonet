@@ -1,5 +1,9 @@
 <?php
 
+// always logout if visiting this public-facing page
+session_start();
+session_destroy();
+
 include('autoload.php');
 UserInterface::printHead();
 if(isset($_SESSION['handle'])) {
