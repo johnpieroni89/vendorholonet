@@ -10,6 +10,11 @@ class UserInterface
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="John Pieroni" />
+                
+                <meta property="og:title" content="Vendor Holonet" />
+                <meta property="og:description" content="Browse Vendors and their wares from one source!" />
+                <meta property="og:image" content="https://www.vendor-holonet.xyz/app/assets/img/logo-large.png" />
+                
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
