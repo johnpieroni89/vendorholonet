@@ -159,7 +159,7 @@ class Vendor {
                     <div class="card-body w-100" style="text-align: center;"><img src="'.$ware->imgSmall.'"></div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
                         <table class="table table-striped table-sm table-bordered">
-                            <tr><td>Price:</td><td>'.number_format($ware->price).'</td></tr>
+                            <tr><td>Price:</td><td style="text-align: right;">'.number_format($ware->price).'</td></tr>
                             <tr><td>Qty:</td><td>'.number_format($ware->quantity).'</td></tr>
                         </table>
                     </div>
