@@ -28,6 +28,12 @@ if(!isset($_SESSION['handle'])) {
         <?php UserInterface::printScripts(); ?>
     </body>
     <script>
+        <?php
+            $search = '';
+            if(isset($_GET['owner'])) {
+                $search = $_GET['owner'];
+            }
+        ?>
         $(document).ready(function () {
             $('#vendorTable').DataTable({
                 pageLength: 50,
@@ -41,7 +47,8 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'owner' },
                     { data: 'wares', render: DataTable.render.number() }
                     { data: 'distance', render: DataTable.render.number() }
-                ]
+                ],
+                search: { search: <?php echo $search; ?> }
             });
         });
     </script>
