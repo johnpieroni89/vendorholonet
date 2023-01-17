@@ -9,7 +9,7 @@ class WebService {
      */
     function fetch_api(string $url) {
         $result = file_get_contents($url);
-        var_dump(json_decode($result->swcapi));
+        var_dump(json_decode($result->{'vendors'}));
         return json_decode($result);
     }
 
