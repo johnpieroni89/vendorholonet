@@ -66,9 +66,25 @@ class UserInterface
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="malls.php" disabled>
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-shop"></i></div>
                                 Malls
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Search</div>
+                            <a class="nav-link" href="vendors.php">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
+                                Vendors
+                            </a>
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                                Wares
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Metrics</div>
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                                Prices
                             </a>
                         </div>
                     </div>
