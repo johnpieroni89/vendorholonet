@@ -46,7 +46,7 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'id', render: DataTable.render.number() },
                     { data: 'name' },
                     { data: 'owner' },
-                    { data: 'wares', render: DataTable.render.number() }
+                    { data: 'wares', render: DataTable.render.number() },
                     { data: 'distance', render: DataTable.render.number() }
                 ]
             });
