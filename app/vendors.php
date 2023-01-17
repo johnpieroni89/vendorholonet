@@ -52,7 +52,7 @@ if(!isset($_SESSION['handle'])) {
                 columnDefs: [{
                     targets: 1,
                     data: function (row, type, val, meta) {
-                        return '<a href="vendor_profile.php?id=' + row.id + '">' + row.name + '</a>';
+                        return 'test';
                     }
                 }],
                 search: { search: '<?php echo $search; ?>' }
