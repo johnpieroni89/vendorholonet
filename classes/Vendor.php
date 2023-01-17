@@ -146,6 +146,12 @@ class Vendor {
                 </div>
             </div>
             <hr/>
+            
+            <div class="container-fluid">
+        ';
+
+        echo '
+            </div>
         ';
     }
 }
