@@ -148,7 +148,7 @@ class Vendor {
             <hr/>
             
             <div class="container-fluid">
-                <div class="row row-cols-auto">
+                <div class="row row-cols-1">
         ';
 
         $wares = Ware::getVendorWares($vendor);
