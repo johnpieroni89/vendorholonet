@@ -46,7 +46,7 @@ class Vendor {
     static function deleteAll() {
         $db = new Database();
         $db->connect();
-        mysqli_query($db->connection, "DELETE * FROM vendors");
+        mysqli_query($db->connection, "TRUNCATE TABLE vendors");
     }
 
     /**
