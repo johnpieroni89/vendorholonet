@@ -48,8 +48,7 @@ if(!isset($_SESSION['handle'])) {
                     { data: 'owner' },
                     { data: 'wares', render: DataTable.render.number() }
                     { data: 'distance', render: DataTable.render.number() }
-                ],
-                search: { search: 'Blue Star' }
+                ]
             });
         });
     </script>
