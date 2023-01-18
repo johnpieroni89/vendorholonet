@@ -9,7 +9,7 @@ if(isset($_SESSION['handle'])) {
     $user = User::getUser($_SESSION['handle']);
 
     // refresh location data
-    $_SESSION['location'] = User::getLocation($_SESSION['uid'], $user->access_token);
+    $_SESSION['location'] = User::getLocation($_SESSION['uid'], $_SESSION['access_token']);
     $_SESSION['location_str'] = 'Location: Hyperspace';
     if($_SESSION['location']) {
         $_SESSION['location_str'] = 'Location: ('.$_SESSION['location']->x.', '.$_SESSION['location']->y.')';
