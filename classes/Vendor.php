@@ -25,7 +25,7 @@ class Vendor {
         $db->connect();
         $id = mysqli_real_escape_string($db->connection, $id);
         $vendor = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors WHERE id = '$id'"), 'Vendor');
-        $vendor->location = Location::getVendorLocation($vendor);
+        $vendor->location = Location::getVendorLocation($vendor->id);
         return $vendor;
     }
 
