@@ -97,9 +97,9 @@ class Location {
         $planet = '',
         $city = '',
         $city_uid = '',
-        $galx = null,
+        $galx = '',
         $galy = '',
-        $sysx = null,
+        $sysx = '',
         $sysy = '',
         $surfx = '',
         $surfy = '',
@@ -114,7 +114,7 @@ class Location {
 
         mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, container_uid, sector, `system`, planet, city, city_uid, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
         VALUES ('$vendor_id', '$container', '$container_uid', '$sector', '$system', '$planet', '$city', '$city_uid', 
-                '$galx', 
+                ".(($galx) ? $galx : 'NULL').", 
                 '$galy', 
                 '$sysx', 
                 '$sysy', 
