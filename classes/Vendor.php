@@ -157,11 +157,12 @@ class Vendor {
                             <table class="table table-bordered table-striped">
                                 <tr><td><b>Container:</b></td><td>'.$vendor->location->container.' ('.$vendor->location->container_uid.')</td></tr>
                                 <tr><td><b>Coordinates:</b></td><td>
-                                    '.(($vendor->location->sector) ? 'Sector: '.$vendor->location->sector.'<br/>' : '<br/>').'
+                                    '.(($vendor->location->sector) ? 'Sector: '.$vendor->location->sector.'<br/>' : ' ').'
                                     '.(($vendor->location->system) ? 'System: '.$vendor->location->system.' ' : 'Deep Space: ').' ('.$vendor->location->galaxyCoords->x.', '.$vendor->location->galaxyCoords->y.')<br/>
                                     '.(($vendor->location->planet) ? 'Planet: '.$vendor->location->planet.' ' : 'Space: ').' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')<br/>
                                     '.(($vendor->location->city) ? 'City: '.$vendor->location->city.' ' : (($vendor->location->surfaceCoords->x) ? 'Surface: ' : '')).'
                                     '.(($vendor->location->surfaceCoords->x) ? '('.$vendor->location->surfaceCoords->x.', '.$vendor->location->systemCoords->y.')<br/>' : '').'
+                                    '.(($vendor->location->groundCoords->x) ? 'Ground: ('.$vendor->location->groundCoords->x.', '.$vendor->location->groundCoords->y.')' : '').'
                                 </td></tr>
                             </table>
                         </div>
