@@ -30,9 +30,9 @@ class WebService {
                 $vendor_data = $vendor_resp['swcapi']['vendor'];
 
                 if (is_string($vendor_data['description'])) {
-                    Vendor::parseVendor($vendor_id, $vendor_data['name'], $vendor_data['description'], $vendor_data['owner']['value']);
+                    Vendor::parseVendor($vendor_id, $vendor_data['name'], $vendor_data['shopkeeper']['name'], $vendor_data['shopkeeper']['images']['small'], $vendor_data['description'], $vendor_data['owner']['value']);
                 } else {
-                    Vendor::parseVendor($vendor_id, $vendor_data['name'], '', $vendor_data['owner']['value']);
+                    Vendor::parseVendor($vendor_id, $vendor_data['name'], $vendor_data['shopkeeper']['name'], $vendor_data['shopkeeper']['images']['small'], '', $vendor_data['owner']['value']);
                 }
 
                 $location = $vendor_data['location'];

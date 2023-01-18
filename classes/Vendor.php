@@ -5,12 +5,17 @@ class Vendor {
     /**
      * @property int $id
      * @property string $name
+     * @property string $merchant
+     * @property string $merchant_img
+     * @property string $name
      * @property string $description
      * @property string $owner
      * @property ?Location $location
      */
     public $id;
     public $name;
+    public $merchant;
+    public $merchant_img;
     public $description;
     public $owner;
     public $location; // Location obj
@@ -60,17 +65,19 @@ class Vendor {
      * @param string $owner
      * @return void
      */
-    static function parseVendor(int $id, string $name, $description, string $owner) {
+    static function parseVendor(int $id, string $name, string $merchant, string $merchant_img, $description, string $owner) {
         $db = new Database();
         $db->connect();
 
         $id = mysqli_real_escape_string($db->connection, $id);
         $name = mysqli_real_escape_string($db->connection, $name);
+        $merchant = mysqli_real_escape_string($db->connection, $merchant);
+        $merchant_img = mysqli_real_escape_string($db->connection, $merchant_img);
         $description = mysqli_real_escape_string($db->connection, $description);
         $owner = mysqli_real_escape_string($db->connection, $owner);
         str_replace('&amp;', '&', $name);
 
-        mysqli_query($db->connection, "INSERT INTO vendors (id, name, description, owner) VALUES ('$id', '$name', '$description', '$owner')");
+        mysqli_query($db->connection, "INSERT INTO vendors (id, name, merchant, merchant_img, description, owner, ) VALUES ('$id', '$name', '$merchant', '$merchant_img', '$description', '$owner')");
     }
 
     static function printVendorTable($vendors) {
@@ -135,10 +142,11 @@ class Vendor {
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Vendor</h4></div>
                         <div class="card-body w-100">
                             <div class="row">
-                                <div class="col-sm-12 col-md-4 align-content-center"><img src="" height="100" width="100" alt="NPC Image"></div>
+                                <div class="col-sm-12 col-md-4 align-content-center"><img src="'.$vendor->merchant_img.'" height="100" width="100" alt="NPC Image"></div>
                                 <div class="col-sm-12 col-md-8">
                                     <table class="table table-bordered">
-                                        <tr><td><b>Shop Name:</b></td><td style="text-align: left;">'.$vendor->name.'</td></tr>
+                                        <tr><td><b>Shop:</b></td><td style="text-align: left;">'.$vendor->name.'</td></tr>
+                                        <tr><td><b>Merchant:</b></td><td style="text-align: left;">'.$vendor->merchant.'</td></tr>
                                         <tr><td><b>Owner:</b></td><td style="text-align: left;">'.$vendor->owner.'</td></tr>
                                     </table>
                                 </div>
