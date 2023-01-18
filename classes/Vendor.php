@@ -169,7 +169,7 @@ class Vendor {
                                     '.(($vendor->location->system) ? 'System: '.$vendor->location->system.' ' : 'Deep Space: ').' ('.$vendor->location->galaxyCoords->x.', '.$vendor->location->galaxyCoords->y.')<br/>
                                     '.(($vendor->location->planet) ? 'Planet: '.$vendor->location->planet.' ' : 'Space: ').' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')<br/>
                                     '.(($vendor->location->city) ? 'City: '.$vendor->location->city.' ' : (($vendor->location->surfaceCoords->x) ? 'Surface: ' : '')).'
-                                    '.(($vendor->location->surfaceCoords->x) ? '('.$vendor->location->surfaceCoords->x.', '.$vendor->location->systemCoords->y.')<br/>' : '').'
+                                    '.(($vendor->location->surfaceCoords->x) ? '('.$vendor->location->surfaceCoords->x.', '.$vendor->location->surfaceCoords->y.')<br/>' : '').'
                                     '.(($vendor->location->groundCoords->x) ? 'Ground: ('.$vendor->location->groundCoords->x.', '.$vendor->location->groundCoords->y.')' : '').'
                                 </td></tr>
                             </table>
