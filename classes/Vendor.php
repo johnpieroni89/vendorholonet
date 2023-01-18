@@ -135,7 +135,7 @@ class Vendor {
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Vendor</h4></div>
                         <div class="card-body w-100">
                             <div class="row">
-                                <div class="col-sm-12 col-md-4">(npc img)</div>
+                                <div class="col-sm-12 col-md-4"><img src="" height="100" width="100" alt="NPC Image"></div>
                                 <div class="col-sm-12 col-md-8">
                                     <table class="table table-bordered">
                                         <tr><td><b>Shop Name:</b></td><td style="text-align: left;">'.$vendor->name.'</td></tr>
