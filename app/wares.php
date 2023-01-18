@@ -19,6 +19,18 @@ if(!isset($_SESSION['handle'])) {
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Wares</h1>
                         <hr/>
+
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Ware Type</label>
+                                <select class="form-control" id="wareType" aria-describedby="typeHelp">
+                                    <option></option>
+                                </select>
+                                <div id="typeHelp" class="form-text">Only types registered to public vendors will show up!</div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+
                         <?php
                             if(isset($_GET['type'])) {
                                 $wares = Ware::getWaresByType($_GET['type']);
