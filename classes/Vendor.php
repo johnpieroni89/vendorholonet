@@ -77,8 +77,7 @@ class Vendor {
         $owner = mysqli_real_escape_string($db->connection, $owner);
         str_replace('&amp;', '&', $name);
 
-        var_dump("INSERT INTO vendors (id, `name`, merchant, merchant_img, description, owner, ) VALUES ('$id', '$name', '$merchant', '$merchant_img', '$description', '$owner')");
-        mysqli_query($db->connection, "INSERT INTO vendors (id, `name`, merchant, merchant_img, description, owner, ) VALUES ('$id', '$name', '$merchant', '$merchant_img', '$description', '$owner')");
+        mysqli_query($db->connection, "INSERT INTO vendors (id, `name`, merchant, merchant_img, description, owner) VALUES ('$id', '$name', '$merchant', '$merchant_img', '$description', '$owner')");
     }
 
     static function printVendorTable($vendors) {
