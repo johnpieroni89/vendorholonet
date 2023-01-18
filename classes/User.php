@@ -68,4 +68,21 @@ class User {
             return false;
         }
     }
+
+    /**
+     * Return Character's UID from SWC API
+     * @param string $handle
+     * @return string
+     */
+    static function getUID(string $handle): string {
+        $handle = str_replace(' ', '%20', $handle);
+        $resp = json_decode(file_get_contents('http://www.swcombine.com/ws/v2.0/character/handlecheck/'.$handle.'.json'), true);
+        return $resp['swcapi']['character']['uid'];
+    }
+
+
+    static function getCharacter(string $uid) {
+        $resp = json_decode(file_get_contents('http://www.swcombine.com/ws/v2.0/character/'.$uid.'.json'), true);
+        var_dump($resp);
+    }
 }
