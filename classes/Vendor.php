@@ -166,7 +166,7 @@ class Vendor {
                                 <tr><td><b>Container:</b></td><td>'.$vendor->location->container.' ('.$vendor->location->container_uid.')</td></tr>
                                 <tr><td><b>Coordinates:</b></td><td>
                                     '.(($vendor->location->sector) ? 'Sector: '.$vendor->location->sector.'<br/>' : ' ').'
-                                    '.((substr($vendor->location->system,0,4) != 'Deep') ? 'System: '.$vendor->location->system.' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')' : $vendor->location->system).' <br/>
+                                    '.((substr($vendor->location->system,0,4) != 'Deep') ? 'System: '.$vendor->location->system.' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')' : 'System: '.$vendor->location->system).' <br/>
                                     '.(($vendor->location->planet) ? 'Planet: '.$vendor->location->planet.' ' : 'Space: ').' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')<br/>
                                     '.(($vendor->location->city) ? 'City: '.$vendor->location->city.' ' : (($vendor->location->surfaceCoords->x) ? 'Surface: ' : '')).'
                                     '.(($vendor->location->surfaceCoords->x) ? '('.$vendor->location->surfaceCoords->x.', '.$vendor->location->surfaceCoords->y.')<br/>' : '').'
