@@ -68,7 +68,7 @@ class Ware {
     static function getWareTypes() {
         $db = new Database();
         $db->connect();
-        $wareQuery = mysqli_query($db->connection, "SELECT type FROM vendors_wares ORDER BY type ASC");
+        $wareQuery = mysqli_query($db->connection, "SELECT DISTINCT type FROM vendors_wares ORDER BY type ASC");
         $wareArr = array();
 
         while($row = mysqli_fetch_object($wareQuery)) {
