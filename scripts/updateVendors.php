@@ -12,4 +12,4 @@ include(__DIR__.'/../classes/WebService.php');
 $ws = new WebService();
 $ws->updateVendorList();
 */
-var_dump(User::getCharacter(User::getUID($_SESSION['handle']), $_SESSION['access_token']));
+var_dump(User::getCharacter(User::getUID('Cedron Tryonel'), '69cd8a3470701736ee31b1829c2aa980'));
