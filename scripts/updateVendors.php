@@ -12,4 +12,5 @@ include(__DIR__.'/../classes/WebService.php');
 $ws = new WebService();
 $ws->updateVendorList();
 */
-var_dump(User::getUID('Cedron Tryonel'));
+$uid = User::getUID('Cedron Tryonel');
+var_dump(User::getCharacter($uid, '69cd8a3470701736ee31b1829c2aa980'));
