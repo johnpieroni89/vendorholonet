@@ -56,7 +56,7 @@ class Location {
         }
 
         $this->groundCoords = null;
-        if($location->groundx) {
+        if($location->groundx && $location->groundy) {
             $this->groundCoords = new Point($location->groundx, $location->groundy);
         }
     }
