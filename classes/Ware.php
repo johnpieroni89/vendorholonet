@@ -83,7 +83,6 @@ class Ware {
      * @return void
      */
     static function parseWare(int $vendor_id, string $type, int $quantity, int $price, string $currency, string $imgSmall, string $imgLarge) {
-        var_dump(true);
         $db = new Database();
         $db->connect();
 
@@ -93,8 +92,6 @@ class Ware {
         $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
         $imgLarge = mysqli_real_escape_string($db->connection, $imgLarge);
 
-        var_dump("INSERT INTO vendors_wares (vendor_id, type, quantity, price, currency, imgSmall, imgLarge) 
-                     VALUES ('$vendor_id', '$type', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
         mysqli_query($db->connection, "INSERT INTO vendors_wares (vendor_id, type, quantity, price, currency, imgSmall, imgLarge) 
                      VALUES ('$vendor_id', '$type', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
     }
