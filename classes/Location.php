@@ -108,9 +108,12 @@ class Location {
     ) {
         $db = new Database();
         $db->connect();
-        $vendor = Vendor::getVendor($vendor_id);
 
-        // escape string
+        $container = mysqli_real_escape_string($db->connection, $container);
+        $sector = mysqli_real_escape_string($db->connection, $sector);
+        $system = mysqli_real_escape_string($db->connection, $system);
+        $planet = mysqli_real_escape_string($db->connection, $planet);
+        $city = mysqli_real_escape_string($db->connection, $city);
 
         mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, container_uid, sector, `system`, planet, city, city_uid, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
         VALUES ('$vendor_id', '$container', '$container_uid', '$sector', '$system', '$planet', '$city', '$city_uid', 

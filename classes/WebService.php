@@ -15,6 +15,7 @@ class WebService {
     function updateVendorList()
     {
         Vendor::deleteAll();
+        Location::deleteAll();
         $resp = $this->fetch_api(self::VENDOR_API);
         $resp = $resp['swcapi']['vendors'];
         $total = $resp['attributes']['total'];
@@ -33,7 +34,6 @@ class WebService {
                     Vendor::parseVendor($vendor_id, $vendor_data['name'], '', $vendor_data['owner']['value']);
                 }
 
-                Location::deleteAll();
                 $location = $vendor_data['location'];
                 $coords = $location['coordinates'];
                 (isset($location['container']['value'])) ? $container = $location['container']['value'] : $container = '';
