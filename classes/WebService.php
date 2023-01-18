@@ -36,15 +36,16 @@ class WebService {
                 Location::deleteAll();
                 $location = $vendor_data['location'];
                 $coords = $location['coordinates'];
+                (isset($location['container']['value'])) ? $container = $location['container']['value'] : $container = '';
+                (isset($location['container']['attributes']['uid'])) ? $container_uid = $location['container']['attributes']['uid'] : $container_uid = '';
+                (isset($location['sector']['value'])) ? $sector = $location['sector']['value'] : $sector = '';
+                (isset($location['system']['value'])) ? $system = $location['system']['value'] : $system = '';
+                (isset($location['planet']['value'])) ? $planet = $location['planet']['value'] : $planet = '';
+                (isset($location['city']['value'])) ? $city = $location['city']['value'] : $city = '';
+                (isset($location['city']['attributes']['uid'])) ? $city_uid = $location['city']['attributes']['uid'] : $city_uid = '';
                 Location::parseLocation(
-                    $vendor_id,
-                    $location['container']['value'],
-                    $location['container']['attributes']['uid'],
-                    $location['sector']['value'],
-                    $location['system']['value'],
-                    $location['planet']['value'],
-                    $location['city']['value'],
-                    $location['city']['attributes']['uid'],
+                    $vendor_id, $container, $container_uid, $sector, $system, $planet, $city,
+                    $city_uid,
                     $coords['galaxy']['attributes']['x'],
                     $coords['galaxy']['attributes']['y'],
                     $coords['system']['attributes']['x'],
