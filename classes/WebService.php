@@ -57,7 +57,7 @@ class WebService {
                     $galx, $galy, $sysx, $sysy, $surfx, $surfy, $groundx, $groundy
                 );
 
-                foreach ($vendor_data['wares'] as $ware) {
+                foreach ($vendor_data['wares']['ware'] as $ware) {
                     if ($ware) {
                         if ($vendor_id && isset($ware['type']) && $ware['quantity'] && $ware['price'] && $ware['currency'] && $ware['images']['small'] && $ware['images']['large']) {
                             $quantity = str_replace(',', '', $ware['quantity']);
