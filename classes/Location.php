@@ -70,7 +70,7 @@ class Location {
         if($vendor_id) {
             $db = new Database();
             $db->connect();
-            $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE id = '$vendor_id'"));
+            $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE vendor_id = '$vendor_id'"));
             if($location) {
                 return new Location($location);
             }
