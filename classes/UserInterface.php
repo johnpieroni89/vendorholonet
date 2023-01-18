@@ -95,7 +95,7 @@ class UserInterface
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        '.$_SESSION['handle'].'
+                        '.$_SESSION['handle'].'<br/>'.$_SESSION['location_str'].'
                     </div>
                 </nav>
             </div>
