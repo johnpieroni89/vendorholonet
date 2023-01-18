@@ -131,7 +131,7 @@ class Vendor {
         echo '
             <div class="container-fluid">
                 <div class="row">
-                    <div class="card col-6 col-sm-6 offset-sm-0 p-0">
+                    <div class="card col-6 col-sm-6 p-0">
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Vendor</h4></div>
                         <div class="card-body w-100">
                             <div class="row">
@@ -151,7 +151,7 @@ class Vendor {
                         <div class="card-footer d-grid w-100" style="text-align: center;"></div>
                     </div>
                     
-                    <div class="card col-6 col-sm-5 offset-sm-1 p-0">
+                    <div class="card col-6 col-sm-6 p-0">
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Location</h4></div>
                         <div class="card-body w-100">
                             <table class="table table-bordered table-striped">
