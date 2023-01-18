@@ -25,7 +25,7 @@ class Vendor {
         $db->connect();
         $id = mysqli_real_escape_string($db->connection, $id);
         $vendor = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors WHERE id = '$id'"), 'Vendor');
-        //$vendor->location = Location::getVendorLocation($vendor->id);
+        //$vendor->location = Location::getVendorLocation($vendor);
         return $vendor;
     }
 
@@ -105,13 +105,17 @@ class Vendor {
 
         foreach ($vendors as $vendor) {
             $wares = Ware::getVendorWares($vendor);
+            $distance = '(In Hyperspace)';
+            if($_SESSION['location']) {
+                //$distance = max(abs($vendor->location->galaxyCoords->x - $_SESSION['location']->x), abs($vendor->location->galaxyCoords->y - $_SESSION['location']->y));
+            }
             echo '
                 <tr>
                     <td>'.$vendor->id.'</td>
                     <td>'.$vendor->name.'</td>
                     <td>Name of vendor owner soon!</td>
                     <td>'.count($wares).'</td>
-                    <td>0</td>
+                    <td>'.$distance.'</td>
                 </tr>
             ';
         }
