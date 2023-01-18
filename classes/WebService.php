@@ -45,6 +45,7 @@ class WebService {
             }
 
             $resp = $this->fetch_api(self::VENDOR_API.'.json?start_index='.($start + 50));
+            $resp = $resp['swcapi']['vendors'];
             $total = $resp['attributes']['total'];
             $count = $resp['attributes']['count'];
             $start = $resp['attributes']['start'];
