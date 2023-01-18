@@ -5,6 +5,12 @@ include('config.php');
 include('classes/Database.php');
 
 include('classes/User.php');
+include('classes/Vendor.php');
+include('classes/Location.php');
+include('classes/Ware.php');
+include('classes/UserInterface.php');
+include('classes/WebService.php');
+
 if(isset($_SESSION['handle'])) {
     $user = User::getUser($_SESSION['handle']);
 
@@ -18,12 +24,6 @@ if(isset($_SESSION['handle'])) {
 } else {
     $user = null;
 }
-
-include('classes/Vendor.php');
-include('classes/Location.php');
-include('classes/Ware.php');
-include('classes/UserInterface.php');
-include('classes/WebService.php');
 
 include('oauth/AuthorizationResult.php');
 include('oauth/ContentTypes.php');
