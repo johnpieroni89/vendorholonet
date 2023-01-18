@@ -27,6 +27,7 @@ class WebService {
                 $vendor_id = $vendor['attributes']['id'];
                 $vendor_resp = $this->fetch_api(self::VENDOR_API . '/' . $vendor_id .'.json');
                 $vendor_data = $vendor_resp['swcapi']['vendor'];
+                $vendor_wares = $vendor_resp['swcapi']['wares'];
 
                 if (is_string($vendor_data['description'])) {
                     Vendor::parseVendor($vendor_id, $vendor_data['name'], $vendor_data['description'], $vendor_data['owner']['value']);
@@ -57,7 +58,7 @@ class WebService {
                 );
 
                 Ware::deleteVendorWares($vendor_id);
-                foreach ($vendor_data['wares'] as $ware) {
+                foreach ($vendor_wares as $ware) {
                     if ($ware) {
                         if ($vendor_id && isset($ware['type']) && $ware['quantity'] && $ware['price'] && $ware['currency'] && $ware['images']['small'] && $ware['images']['large']) {
                             $quantity = str_replace(',', '', $ware['quantity']);
