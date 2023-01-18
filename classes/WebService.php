@@ -8,10 +8,9 @@ class WebService {
      * @param string $url
      */
     function fetch_api(string $url) {
-        $result = file_get_contents($url);
-        $result = json_decode($result);
-        var_dump($result->{'vendors'});
-        return json_decode($result);
+        $result = json_decode(file_get_contents($url));
+        echo $result->vendors;
+        return $result;
     }
 
     function updateVendorList()
