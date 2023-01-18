@@ -39,10 +39,26 @@ class Location {
         $this->planet = $location->planet;
         $this->city = $location->city;
         $this->city_uid = $location->city_uid;
-        $this->galaxyCoords = new Point($location->galx, $location->galy);
-        $this->systemCoords = new Point($location->sysx, $location->sysy);
-        $this->surfaceCoords = new Point($location->surfx, $location->surfy);
-        $this->groundCoords = new Point($location->groundx, $location->groundy);
+
+        $this->galaxyCoords = null;
+        if($location->galx) {
+            $this->galaxyCoords = new Point($location->galx, $location->galy);
+        }
+
+        $this->systemCoords = null;
+        if($location->sysx) {
+            $this->systemCoords = new Point($location->sysx, $location->sysy);
+        }
+
+        $this->surfaceCoords = null;
+        if($location->surfx) {
+            $this->surfaceCoords = new Point($location->surfx, $location->surfy);
+        }
+
+        $this->groundCoords = null;
+        if($location->groundx) {
+            $this->groundCoords = new Point($location->groundx, $location->groundy);
+        }
     }
 
     /**
