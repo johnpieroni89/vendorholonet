@@ -13,7 +13,7 @@ class Vendor {
     public $name;
     public $description;
     public $owner;
-    //public $location; // Location obj
+    public $location; // Location obj
 
     /**
      * Get Vendor object

@@ -47,15 +47,17 @@ class Location {
 
     /**
      * Return a vendor's location
-     * @param int $vendor_id
+     * @param $vendor_id
      * @return Location|void
      */
-    static function getVendorLocation(int $vendor_id): ?Location {
-        $db = new Database();
-        $db->connect();
-        $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE id = '$vendor_id'"));
-        if($location) {
-            return new Location($location);
+    static function getVendorLocation($vendor_id): ?Location {
+        if($vendor_id) {
+            $db = new Database();
+            $db->connect();
+            $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE id = '$vendor_id'"));
+            if($location) {
+                return new Location($location);
+            }
         }
     }
 
