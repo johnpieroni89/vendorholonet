@@ -41,17 +41,17 @@ class Location {
         $this->city_uid = $location->city_uid;
 
         $this->galaxyCoords = null;
-        if($location->galx) {
+        if($location->galx && $location->galy) {
             $this->galaxyCoords = new Point($location->galx, $location->galy);
         }
 
         $this->systemCoords = null;
-        if($location->sysx) {
+        if($location->sysx && $location->sysy) {
             $this->systemCoords = new Point($location->sysx, $location->sysy);
         }
 
         $this->surfaceCoords = null;
-        if($location->surfx) {
+        if($location->surfx && $location->surfy) {
             $this->surfaceCoords = new Point($location->surfx, $location->surfy);
         }
 
