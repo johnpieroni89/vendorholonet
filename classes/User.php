@@ -83,6 +83,6 @@ class User {
 
     static function getCharacter(string $uid) {
         $resp = json_decode(file_get_contents('http://www.swcombine.com/ws/v2.0/character/'.$uid.'.json'), true);
-        var_dump($resp);
+        return $resp;
     }
 }
