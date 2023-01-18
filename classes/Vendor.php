@@ -144,17 +144,17 @@ class Vendor {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="row flex-fill"><b><u>Description</u></b></div>
-                                <div class="row flex-fill align-content-start">'.$vendor->description.'</div>
+                                <div class="row flex-fill align-content-center"><b><u>Description</u></b></div>
+                                <div class="row flex-fill align-content-start p-2">'.$vendor->description.'</div>
                             </div>
                         </div>
-                        <div class="card-footer d-grid w-100" style="text-align: center;"><button class="btn btn-primary btn-lg">Message</button></div>
+                        <div class="card-footer d-grid w-100" style="text-align: center;"></div>
                     </div>
                     
                     <div class="card col-6 col-sm-5 offset-sm-1 p-0">
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Location</h4></div>
                         <div class="card-body w-100">(work in progress)</div>
-                        <div class="card-footer d-grid w-100" style="text-align: center;"><button class="btn btn-primary btn-lg">Travel</button></div>
+                        <div class="card-footer d-grid w-100" style="text-align: center;"><button class="btn btn-primary">Travel</button></div>
                     </div>
                 </div>
             </div>
