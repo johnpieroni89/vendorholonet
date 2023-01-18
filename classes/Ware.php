@@ -83,6 +83,7 @@ class Ware {
      * @return void
      */
     static function parseWare(int $vendor_id, string $type, int $quantity, int $price, string $currency, string $imgSmall, string $imgLarge) {
+        var_dump(true);
         $db = new Database();
         $db->connect();
 

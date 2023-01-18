@@ -63,7 +63,6 @@ class WebService {
                             $quantity = str_replace(',', '', $ware['quantity']);
                             Ware::parseWare($vendor_id, $ware['type'], $quantity, $ware['price'], $ware['currency'], $ware['images']['small'], $ware['images']['large']);
                         }
-                        var_dump(true);
                     } else {
                         var_dump(false);
                     }
