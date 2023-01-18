@@ -25,7 +25,12 @@ if(!isset($_SESSION['handle'])) {
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Ware Type</label>
                                     <select name="type" class="form-control" id="wareType" aria-describedby="typeHelp">
-                                        <option></option>
+                                    <?php
+                                        $types = Ware::getWareTypes();
+                                        foreach ($types as $type) {
+                                            echo '<option value="'.$type.'">'.$type.'</option>';
+                                        }
+                                    ?>
                                     </select>
                                     <div id="typeHelp" class="form-text">Only types registered to public vendors will show up!</div>
                                 </div>

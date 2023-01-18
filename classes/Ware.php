@@ -65,6 +65,18 @@ class Ware {
         return $wareArr;
     }
 
+    static function getWareTypes() {
+        $db = new Database();
+        $db->connect();
+        $wareQuery = mysqli_query($db->connection, "SELECT type FROM vendors_wares ORDER BY type ASC");
+        $wareArr = array();
+
+        while($row = mysqli_fetch_object($wareQuery)) {
+            $wareArr[] = $row->type;
+        }
+        return $wareArr;
+    }
+
     /**
      * Get all vendor wares
      * @param string $type
