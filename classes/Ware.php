@@ -64,13 +64,11 @@ class Ware {
 
     /**
      * delete all vendor wares
-     * @param int $vendor_id
      */
-    static function deleteVendorWares(int $vendor_id) {
+    static function deleteAll() {
         $db = new Database();
         $db->connect();
-        $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
-        mysqli_query($db->connection, "DELETE FROM vendors_wares WHERE vendor_id = '$vendor_id'");
+        mysqli_query($db->connection, "TRUNCATE TABLE vendors_wares");
     }
 
     /**

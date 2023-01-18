@@ -16,6 +16,7 @@ class WebService {
     {
         Vendor::deleteAll();
         Location::deleteAll();
+        Ware::deleteAll();
         $resp = $this->fetch_api(self::VENDOR_API);
         $resp = $resp['swcapi']['vendors'];
         $total = $resp['attributes']['total'];
@@ -57,7 +58,6 @@ class WebService {
                     $galx, $galy, $sysx, $sysy, $surfx, $surfy, $groundx, $groundy
                 );
 
-                Ware::deleteVendorWares($vendor_id);
                 foreach ($vendor_wares as $ware) {
                     if ($ware) {
                         if ($vendor_id && isset($ware['type']) && $ware['quantity'] && $ware['price'] && $ware['currency'] && $ware['images']['small'] && $ware['images']['large']) {
