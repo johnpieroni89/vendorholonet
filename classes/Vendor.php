@@ -156,6 +156,9 @@ class Vendor {
                         <div class="card-body w-100">
                             <table class="table table-bordered table-striped">
                                 <tr><td><b>Container:</b></td><td>'.$vendor->location->container.' ('.$vendor->location->container_uid.')</td></tr>
+                                <tr><td><b>Coordinates:</b></td><td>
+                                    '.(($vendor->location->sector) ? 'Sector: '.$vendor->location->sector.'<br/>' : '<br/>').'
+                                </td></tr>
                             </table>
                         </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;"><button class="btn btn-primary">Travel</button></div>
