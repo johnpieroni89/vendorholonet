@@ -74,7 +74,7 @@ class Ware {
         $db = new Database();
         $db->connect();
         $type = mysqli_real_escape_string($db->connection, $type);
-        $wareQuery = mysqli_query($db->connection, "SELECT vendor_id, type, quantity, price FROM vendors_wares WHERE type = '$type' ORDER BY price ASC");
+        $wareQuery = mysqli_query($db->connection, "SELECT id, vendor_id, type, quantity, price FROM vendors_wares WHERE type = '$type' ORDER BY price ASC");
         $wareArr = array();
 
         while($row = mysqli_fetch_object($wareQuery)) {
