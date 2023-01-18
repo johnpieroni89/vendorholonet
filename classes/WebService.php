@@ -43,17 +43,17 @@ class WebService {
                 (isset($location['planet']['value'])) ? $planet = $location['planet']['value'] : $planet = '';
                 (isset($location['city']['value'])) ? $city = $location['city']['value'] : $city = '';
                 (isset($location['city']['attributes']['uid'])) ? $city_uid = $location['city']['attributes']['uid'] : $city_uid = '';
+                (isset($coords['galaxy']['attributes']['x'])) ? $galx = $coords['galaxy']['attributes']['x'] : $galx = '';
+                (isset($coords['galaxy']['attributes']['y'])) ? $galy = $coords['galaxy']['attributes']['y'] : $galy = '';
+                (isset($coords['system']['attributes']['x'])) ? $sysx = $coords['system']['attributes']['x'] : $sysx = '';
+                (isset($coords['system']['attributes']['y'])) ? $sysy = $coords['system']['attributes']['y'] : $sysy = '';
+                (isset($coords['surface']['attributes']['x'])) ? $surfx = $coords['surface']['attributes']['x'] : $surfx = '';
+                (isset($coords['surface']['attributes']['y'])) ? $surfy = $coords['surface']['attributes']['y'] : $surfy = '';
+                (isset($coords['ground']['attributes']['x'])) ? $groundx = $coords['ground']['attributes']['x'] : $groundx = '';
+                (isset($coords['ground']['attributes']['y'])) ? $groundy = $coords['ground']['attributes']['y'] : $groundy = '';
                 Location::parseLocation(
-                    $vendor_id, $container, $container_uid, $sector, $system, $planet, $city,
-                    $city_uid,
-                    $coords['galaxy']['attributes']['x'],
-                    $coords['galaxy']['attributes']['y'],
-                    $coords['system']['attributes']['x'],
-                    $coords['system']['attributes']['y'],
-                    $coords['surface']['attributes']['x'],
-                    $coords['surface']['attributes']['y'],
-                    $coords['ground']['attributes']['x'],
-                    $coords['ground']['attributes']['y']
+                    $vendor_id, $container, $container_uid, $sector, $system, $planet, $city, $city_uid,
+                    $galx, $galy, $sysx, $sysy, $surfx, $surfy, $groundx, $groundy
                 );
 
                 Ware::deleteVendorWares($vendor_id);
