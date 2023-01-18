@@ -80,9 +80,19 @@ class User {
         return $resp['swcapi']['character']['uid'];
     }
 
-
+    /**
+     * Get Character object from SWC API
+     * @param string $uid
+     * @param string $access_token
+     * @return mixed
+     */
     static function getCharacter(string $uid, string $access_token) {
         $resp = json_decode(file_get_contents('http://www.swcombine.com/ws/v2.0/character/'.$uid.'.json?access_token='.$access_token), true);
+        return $resp;
+    }
+
+    static function getLocation(string $uid, string $access_token) {
+        $resp = json_decode(file_get_contents('https://www.swcombine.com/ws/v2.0/location/characters/'.$uid.'.json?access_token='.$access_token), true);
         return $resp;
     }
 }

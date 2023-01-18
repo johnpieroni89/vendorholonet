@@ -13,4 +13,4 @@ $ws = new WebService();
 $ws->updateVendorList();
 */
 $uid = User::getUID('Cedron Tryonel');
-var_dump(User::getCharacter($uid, '69cd8a3470701736ee31b1829c2aa980'));
+var_dump(User::getLocation($uid, '69cd8a3470701736ee31b1829c2aa980'));
