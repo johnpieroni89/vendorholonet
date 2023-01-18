@@ -83,7 +83,8 @@ if(!isset($_SESSION['handle'])) {
                     targets: [2, 3, 5],
                     className: 'dt-body-right'
                 }],
-                search: { search: '<?php echo $search; ?>' }
+                search: { search: '<?php echo $search; ?>' },
+                order: [3, 'asc']
             });
         });
     </script>
