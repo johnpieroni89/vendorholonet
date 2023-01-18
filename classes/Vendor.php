@@ -168,7 +168,7 @@ class Vendor {
                         </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;">
                             <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$vendor->location->galaxyCoords->x.'&galY='.$vendor->location->galaxyCoords->y.'&sysX='.$vendor->location->systemCoords->x.'&sysY='.$vendor->location->systemCoords->y.'&surfX='.$vendor->location->surfaceCoords->x.'&surfY='.$vendor->location->surfaceCoords->y.'&groundX='.$vendor->location->groundCoords->x.'&groundY='.$vendor->location->groundCoords->y.'">
-                            <button class="btn btn-primary">Travel</button></a></div>
+                            <button class="btn btn-primary flex-fill">Travel</button></a></div>
                     </div>
                 </div>
             </div>
