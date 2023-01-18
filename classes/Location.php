@@ -118,7 +118,7 @@ class Location {
                 '$galy', 
                 '$sysx', 
                 '$sysy', 
-                ".($surfx) ? $surfx : 'NULL'.", 
+                ".(($surfx) ? $surfx : 'NULL').", 
                 '$surfy', 
                 '$groundx', 
                 '$groundy'
