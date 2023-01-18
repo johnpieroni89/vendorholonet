@@ -8,8 +8,8 @@ class WebService {
      * @param string $url
      */
     function fetch_api(string $url) {
-        $result = json_decode(file_get_contents($url));
-        var_dump($result);
+        $result = json_decode(file_get_contents($url), true);
+        var_dump($result['swcapi']['vendors']);
         return $result;
     }
 
