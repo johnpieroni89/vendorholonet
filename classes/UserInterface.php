@@ -81,7 +81,7 @@ class UserInterface
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
                                 Vendors
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="wares.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                                 Wares
                             </a>

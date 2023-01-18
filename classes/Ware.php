@@ -66,6 +66,24 @@ class Ware {
     }
 
     /**
+     * Get all vendor wares
+     * @param string $type
+     * @return Ware[]
+     */
+    static function getWaresByType(string $type): array {
+        $db = new Database();
+        $db->connect();
+        $type = mysqli_real_escape_string($db->connection, $type);
+        $wareQuery = mysqli_query($db->connection, "SELECT vendor_id, type, quantity, price FROM vendors_wares WHERE type = '$type' ORDER BY price ASC");
+        $wareArr = array();
+
+        while($row = mysqli_fetch_object($wareQuery)) {
+            $wareArr[] = Ware::getWareById($row->id);
+        }
+        return $wareArr;
+    }
+
+    /**
      * delete all vendor wares
      */
     static function deleteAll() {
@@ -98,5 +116,62 @@ class Ware {
 
         mysqli_query($db->connection, "INSERT INTO vendors_wares (vendor_id, type, name, quantity, price, currency, imgSmall, imgLarge) 
                      VALUES ('$vendor_id', '$type', '$name', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
+    }
+
+    static function printWareTable($wares) {
+        echo '
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Ware Registry
+                </div>
+                <div class="card-body">
+                    <table id="wareTable" class="table table-sm table-striped table-responsive table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Vendor</th>
+                                <th>Distance</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Vendor</th>
+                                <th>Distance</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>';
+
+        foreach ($wares as $ware) {
+            $distance = '(In Hyperspace)';
+            $vendor = Vendor::getVendor($ware->vendor_id);
+            if($_SESSION['location']) {
+                $distance = max(abs($vendor->location->galaxyCoords->x - $_SESSION['location']->x), abs($vendor->location->galaxyCoords->y - $_SESSION['location']->y));
+            }
+            echo '
+                <tr>
+                    <td>'.$ware->vendor_id.'</td>
+                    <td>'.$ware->type.'</td>
+                    <td>'.$ware->quantity.'</td>
+                    <td>'.$ware->price.'</td>
+                    <td>'.$vendor->name.'</td>
+                    <td>'.$distance.'</td>
+                </tr>
+            ';
+        }
+
+        echo '                    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        ';
     }
 }
