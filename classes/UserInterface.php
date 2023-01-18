@@ -109,9 +109,7 @@ class UserInterface
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Developed by Cedron Tryonel. Vendor Holonet is a website associated with <a href="http://www.swcombine.com">Star Wars Combine</a>.</div>
                         <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
+                            <a href="https://github.com/johnpieroni89/vendorholonet">GitHub Repo</a>
                         </div>
                     </div>
                 </div>
