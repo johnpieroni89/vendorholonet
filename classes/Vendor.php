@@ -134,9 +134,18 @@ class Vendor {
                     <div class="card col-6 col-sm-6 offset-sm-0 p-0">
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Vendor</h4></div>
                         <div class="card-body w-100">
-                            <p><b>Shop Name</b>: '.$vendor->name.'</p>
-                            <p><b>Shop Description</b>: '.$vendor->description.'</p>
-                            <p><b>Owner</b>: (work in progress)</p>
+                            <div class="row">
+                                <div class="col">(npc img)</div>
+                                <div class="col">
+                                    <table class="table table-striped table-sm table-bordered">
+                                        <tr><td>Shop Name:</td><td style="text-align: left;">'.$vendor->name.'</td></tr>
+                                        <tr><td>Owner:</td><td style="text-align: left;">'.$vendor->owner.'</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p><b>Description:</b>'.$vendor->description.'</p>
+                            </div>
                         </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;"><button class="btn btn-primary btn-lg">Message</button></div>
                     </div>
