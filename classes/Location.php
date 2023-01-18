@@ -48,7 +48,7 @@ class Location {
     /**
      * Return a vendor's location
      * @param $vendor_id
-     * @return Location|void
+     * @return Location|null
      */
     static function getVendorLocation($vendor_id): ?Location {
         if($vendor_id) {
@@ -59,6 +59,7 @@ class Location {
                 return new Location($location);
             }
         }
+        return null;
     }
 
     static function deleteAll() {
