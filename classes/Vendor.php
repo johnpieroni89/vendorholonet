@@ -158,8 +158,8 @@ class Vendor {
                                 <tr><td><b>Container:</b></td><td>'.$vendor->location->container.' ('.$vendor->location->container_uid.')</td></tr>
                                 <tr><td><b>Coordinates:</b></td><td>
                                     '.(($vendor->location->sector) ? 'Sector: '.$vendor->location->sector.'<br/>' : '<br/>').'
-                                    '.(($vendor->location->system) ? 'System: '.$vendor->location->system.' ' : 'Deep Space: ').' ('.$vendor->location->galaxyCoords->x.', '.$vendor->location->galaxyCoords->y.')
-                                    '.(($vendor->location->planet) ? 'Planet: '.$vendor->location->planet.' ' : '').' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')
+                                    '.(($vendor->location->system) ? 'System: '.$vendor->location->system.' ' : 'Deep Space: ').' ('.$vendor->location->galaxyCoords->x.', '.$vendor->location->galaxyCoords->y.')<br/>
+                                    '.(($vendor->location->planet) ? 'Planet: '.$vendor->location->planet.' ' : '').' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')<br/>
                                 </td></tr>
                             </table>
                         </div>
