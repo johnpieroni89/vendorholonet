@@ -75,7 +75,7 @@ class Vendor {
 
     static function printVendorTable($vendors) {
         echo '
-            <div class="card mb-4" style="overflow-x: scroll; overflow-y: scroll;">
+            <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     Vendor Registry
@@ -112,7 +112,7 @@ class Vendor {
                 <tr>
                     <td>'.$vendor->id.'</td>
                     <td>'.$vendor->name.'</td>
-                    <td>Name of vendor owner soon!</td>
+                    <td>'.$vendor->owner.'</td>
                     <td>'.count($wares).'</td>
                     <td>'.$distance.'</td>
                 </tr>
@@ -158,7 +158,7 @@ class Vendor {
         foreach ($wares as $ware) {
             echo '
                 <div class="col card p-1">
-                    <div class="card-header bg-light w-100" style="text-align: center; height: 60px;"><h6 class="m-0">'.$ware->type.'</h6><br/>'.$ware->name.'</div>
+                    <div class="card-header bg-light w-100" style="text-align: center; height: 60px;"><h6 class="p-0 m-0">'.$ware->type.'</h6><br/>'.$ware->name.'</div>
                     <div class="card-body w-100" style="text-align: center;"><img src="'.$ware->imgSmall.'"></div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
                         <table class="table table-striped table-sm table-bordered">
