@@ -4,10 +4,12 @@ class Location {
     /**
      * @property int $vendor_id
      * @property string $container
+     * @property string $container_uid
      * @property string $sector
      * @property string $system
      * @property string $planet
      * @property string $city
+     * @property string $city_uid
      * @property Point $galaxyCoords
      * @property Point $systemCoords
      * @property Point $surfaceCoords
@@ -16,10 +18,12 @@ class Location {
     public $id;
     public $vendor_id;
     public $container;
+    public $container_uid;
     public $sector;
     public $system;
     public $planet;
     public $city;
+    public $city_uid;
     public $galaxyCoords;
     public $systemCoords;
     public $surfaceCoords;
@@ -29,10 +33,12 @@ class Location {
         $this->id = $location->id;
         $this->vendor_id = $location->vendor_id;
         $this->container = $location->container;
+        $this->container_uid = $location->container_uid;
         $this->sector = $location->sector;
         $this->system = $location->system;
         $this->planet = $location->planet;
         $this->city = $location->city;
+        $this->city_uid = $location->city_uid;
         $this->galaxyCoords = new Point($location->galx, $location->galy);
         $this->systemCoords = new Point($location->sysx, $location->sysy);
         $this->surfaceCoords = new Point($location->surfx, $location->surfy);
@@ -53,14 +59,22 @@ class Location {
         }
     }
 
+    static function deleteAll() {
+        $db = new Database();
+        $db->connect();
+        mysqli_query($db->connection, "TRUNCATE TABLE vendors_locations");
+    }
+
     /**
      * add or update vendor location from api
      * @param int $vendor_id
      * @param $container
+     * @param $container_uid
      * @param $sector
      * @param $system
      * @param $planet
      * @param $city
+     * @param $city_uid
      * @param $galx
      * @param $galy
      * @param $sysx
@@ -71,7 +85,24 @@ class Location {
      * @param $groundy
      * @return void
      */
-    static function parseLocation(int $vendor_id, $container, $sector, $system, $planet, $city, $galx, $galy, $sysx, $sysy, $surfx, $surfy, $groundx, $groundy) {
+    static function parseLocation(
+        int $vendor_id,
+        $container,
+        $container_uid,
+        $sector = '',
+        $system = '',
+        $planet = '',
+        $city = '',
+        $city_uid = '',
+        $galx = '',
+        $galy = '',
+        $sysx = '',
+        $sysy = '',
+        $surfx = '',
+        $surfy = '',
+        $groundx = '',
+        $groundy = ''
+    ) {
         $db = new Database();
         $db->connect();
         $vendor = Vendor::getVendor($vendor_id);
@@ -79,12 +110,12 @@ class Location {
         // escape string
 
         if(! self::getVendorLocation($vendor)) {
-            mysqli_query($db->connection, "UPDATE vendors_locations SET container = '$container', sector = '$sector', `system` = '$system', 
-                         planet = '$planet', city = '$city', galx = '$galx', galy = '$galy', sysx = '$sysx', sysy = '$sysy', 
+            mysqli_query($db->connection, "UPDATE vendors_locations SET container = '$container', container_uid = '$container_uid', sector = '$sector', `system` = '$system', 
+                         planet = '$planet', city = '$city', city_uid = '$city_uid', galx = '$galx', galy = '$galy', sysx = '$sysx', sysy = '$sysy', 
                          surfx = '$surfx', surfy = '$surfy', groundx = '$groundx', groundy = '$groundy' WHERE vendor_id = '$vendor->id'");
         } else {
-            mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, sector, `system`, planet, city, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
-                         VALUES ('$vendor_id', '$container', '$sector', '$system', '$planet', '$city', '$galx', '$galy', '$sysx', '$sysy', '$surfx', '$surfy', '$groundx', '$groundy')");
+            mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, container_uid, sector, `system`, planet, city, city_uid, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
+                         VALUES ('$vendor_id', '$container', '$container_uid', '$sector', '$system', '$planet', '$city', '$city_uid', '$galx', '$galy', '$sysx', '$sysy', '$surfx', '$surfy', '$groundx', '$groundy')");
         }
     }
 }

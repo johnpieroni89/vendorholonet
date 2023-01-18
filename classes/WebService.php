@@ -28,10 +28,32 @@ class WebService {
                 $vendor_data = $vendor_resp['swcapi']['vendor'];
 
                 if (is_string($vendor_data['description'])) {
-                    Vendor::parseVendor($vendor_data['id'], $vendor_data['name'], $vendor_data['description'], $vendor_data['owner']);
+                    Vendor::parseVendor($vendor_id, $vendor_data['name'], $vendor_data['description'], $vendor_data['owner']);
                 } else {
-                    Vendor::parseVendor($vendor_data['id'], $vendor_data['name'], '', $vendor_data['owner']);
+                    Vendor::parseVendor($vendor_id, $vendor_data['name'], '', $vendor_data['owner']);
                 }
+
+                Location::deleteAll();
+                $location = $vendor_data['location'];
+                $coords = $location['coordinates'];
+                Location::parseLocation(
+                    $vendor_id,
+                    $location['container']['value'],
+                    $location['container']['attributes']['uid'],
+                    $location['sector']['value'],
+                    $location['system']['value'],
+                    $location['planet']['value'],
+                    $location['city']['value'],
+                    $location['city']['attributes']['uid'],
+                    $coords['galaxy']['attributes']['x'],
+                    $coords['galaxy']['attributes']['y'],
+                    $coords['system']['attributes']['x'],
+                    $coords['system']['attributes']['y'],
+                    $coords['surface']['attributes']['x'],
+                    $coords['surface']['attributes']['y'],
+                    $coords['ground']['attributes']['x'],
+                    $coords['ground']['attributes']['y']
+                );
 
                 Ware::deleteVendorWares($vendor_id);
                 foreach ($vendor_data['wares'] as $ware) {
