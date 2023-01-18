@@ -58,7 +58,6 @@ class WebService {
                 );
 
                 foreach ($vendor_data['wares'] as $ware) {
-                    var_dump($ware);
                     if ($ware) {
                         if ($vendor_id && isset($ware['type']) && $ware['quantity'] && $ware['price'] && $ware['currency'] && $ware['images']['small'] && $ware['images']['large']) {
                             $quantity = str_replace(',', '', $ware['quantity']);
