@@ -36,7 +36,10 @@ class User {
         $_SESSION['handle'] = $user->handle;
         $_SESSION['uid'] = User::getUID($handle);
         $_SESSION['location'] = User::getLocation($_SESSION['uid'], $user->access_token);
-        $_SESSION['location_str'] = 'Location: ('.$_SESSION['location']->x.', '.$_SESSION['location']->y.')';
+        $_SESSION['location_str'] = 'Location: Hyperspace';
+        if($_SESSION['location']) {
+            $_SESSION['location_str'] = 'Location: ('.$_SESSION['location']->x.', '.$_SESSION['location']->y.')';
+        }
         $_SESSION['client_ip'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['client_user_agent'] = $_SERVER['HTTP_USER_AGENT'];
         header("Location: ../app/index.php");
