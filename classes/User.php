@@ -81,8 +81,8 @@ class User {
     }
 
 
-    static function getCharacter(string $uid) {
-        $resp = json_decode(file_get_contents('http://www.swcombine.com/ws/v2.0/character/'.$uid.'.json'), true);
+    static function getCharacter(string $uid, string $access_token) {
+        $resp = json_decode(file_get_contents('http://www.swcombine.com/ws/v2.0/character/'.$uid.'.json?access_token='.$access_token), true);
         return $resp;
     }
 }
