@@ -135,7 +135,7 @@ class Vendor {
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Vendor</h4></div>
                         <div class="card-body w-100">
                             <div class="row">
-                                <div class="col-sm-12 col-md-4"><img src="" height="100" width="100" alt="NPC Image"></div>
+                                <div class="col-sm-12 col-md-4 align-content-center"><img src="" height="100" width="100" alt="NPC Image"></div>
                                 <div class="col-sm-12 col-md-8">
                                     <table class="table table-bordered">
                                         <tr><td><b>Shop Name:</b></td><td style="text-align: left;">'.$vendor->name.'</td></tr>
@@ -153,7 +153,11 @@ class Vendor {
                     
                     <div class="card col-6 col-sm-5 offset-sm-1 p-0">
                         <div class="card-header bg-light w-100" style="text-align: center;"><h4>Location</h4></div>
-                        <div class="card-body w-100">(work in progress)</div>
+                        <div class="card-body w-100">
+                            <table class="table table-bordered table-striped">
+                                <tr><td><b>Container:</b></td><td>'.$vendor->location->container.' ('.$vendor->location->container_uid.')</td></tr>
+                            </table>
+                        </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;"><button class="btn btn-primary">Travel</button></div>
                     </div>
                 </div>
