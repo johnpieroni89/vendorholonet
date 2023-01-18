@@ -7,7 +7,7 @@ class Vendor {
      * @property string $name
      * @property string $description
      * @property string $owner
-     * @property Location $location
+     * @property ?Location $location
      */
     public $id;
     public $name;
@@ -70,11 +70,7 @@ class Vendor {
         $owner = mysqli_real_escape_string($db->connection, $owner);
         str_replace('&amp;', '&', $name);
 
-        if(self::getVendor($id)) {
-            mysqli_query($db->connection, "UPDATE vendors SET name = '$name', description = '$description', owner = '$owner' WHERE id = '$id'");
-        } else {
-            mysqli_query($db->connection, "INSERT INTO vendors (id, name, description, owner) VALUES ('$id', '$name', '$description', '$owner')");
-        }
+        mysqli_query($db->connection, "INSERT INTO vendors (id, name, description, owner) VALUES ('$id', '$name', '$description', '$owner')");
     }
 
     static function printVendorTable($vendors) {

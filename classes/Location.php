@@ -112,14 +112,8 @@ class Location {
 
         // escape string
 
-        if(! self::getVendorLocation($vendor)) {
-            mysqli_query($db->connection, "UPDATE vendors_locations SET container = '$container', container_uid = '$container_uid', sector = '$sector', `system` = '$system', 
-                         planet = '$planet', city = '$city', city_uid = '$city_uid', galx = '$galx', galy = '$galy', sysx = '$sysx', sysy = '$sysy', 
-                         surfx = '$surfx', surfy = '$surfy', groundx = '$groundx', groundy = '$groundy' WHERE vendor_id = '$vendor->id'");
-        } else {
-            mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, container_uid, sector, `system`, planet, city, city_uid, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
-                         VALUES ('$vendor_id', '$container', '$container_uid', '$sector', '$system', '$planet', '$city', '$city_uid', '$galx', '$galy', '$sysx', '$sysy', '$surfx', '$surfy', '$groundx', '$groundy')");
-        }
+        mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, container_uid, sector, `system`, planet, city, city_uid, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
+        VALUES ('$vendor_id', '$container', '$container_uid', '$sector', '$system', '$planet', '$city', '$city_uid', '$galx', '$galy', '$sysx', '$sysy', '$surfx', '$surfy', '$groundx', '$groundy')");
     }
 }
 
