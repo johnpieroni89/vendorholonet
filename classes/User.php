@@ -110,5 +110,6 @@ class User {
             $location = $resp['swcapi']['location']['coordinates']['galaxy']['attributes'];
             return new Point($location['x'], $location['y']);
         }
+        return null;
     }
 }
