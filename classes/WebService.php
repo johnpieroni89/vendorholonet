@@ -9,7 +9,7 @@ class WebService {
      */
     function fetch_api(string $url) {
         $result = json_decode(file_get_contents($url));
-        echo $result;
+        var_dump($result);
         return $result;
     }
 
