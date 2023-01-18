@@ -21,10 +21,10 @@ if(!isset($_SESSION['handle'])) {
                         <hr/>
 
                         <div class="container p-5">
-                            <form>
+                            <form method="get" action="">
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Ware Type</label>
-                                    <select class="form-control" id="wareType" aria-describedby="typeHelp">
+                                    <select name="type" class="form-control" id="wareType" aria-describedby="typeHelp">
                                         <option></option>
                                     </select>
                                     <div id="typeHelp" class="form-text">Only types registered to public vendors will show up!</div>
