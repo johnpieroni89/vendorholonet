@@ -145,7 +145,7 @@ class Vendor {
                             </div>
                             <div class="row">
                                 <div class="row flex-fill align-content-center"><b><u>Description</u></b></div>
-                                <div class="row flex-fill align-content-start p-2">'.$vendor->description.'</div>
+                                <div class="row flex-fill align-content-start p-5">'.$vendor->description.'</div>
                             </div>
                         </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;"></div>
