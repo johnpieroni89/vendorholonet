@@ -47,7 +47,7 @@ class WebService {
                 (isset($coords['galaxy']['attributes']['y'])) ? $galy = $coords['galaxy']['attributes']['y'] : $galy = '';
                 (isset($coords['system']['attributes']['x'])) ? $sysx = $coords['system']['attributes']['x'] : $sysx = '';
                 (isset($coords['system']['attributes']['y'])) ? $sysy = $coords['system']['attributes']['y'] : $sysy = '';
-                (isset($coords['surface']['attributes']['x'])) ? $surfx = $coords['surface']['attributes']['x'] : $surfx = null;
+                (isset($coords['surface']['attributes']['x'])) ? $surfx = $coords['surface']['attributes']['x'] : $surfx = '';
                 (isset($coords['surface']['attributes']['y'])) ? $surfy = $coords['surface']['attributes']['y'] : $surfy = '';
                 (isset($coords['ground']['attributes']['x'])) ? $groundx = $coords['ground']['attributes']['x'] : $groundx = '';
                 (isset($coords['ground']['attributes']['y'])) ? $groundy = $coords['ground']['attributes']['y'] : $groundy = '';
