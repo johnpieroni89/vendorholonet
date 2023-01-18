@@ -34,6 +34,7 @@ class User {
         $user = User::getUser($handle);
         $_SESSION['id'] = $user->id;
         $_SESSION['handle'] = $user->handle;
+        $_SESSION['access_token'] = $user->access_token;
         $_SESSION['uid'] = User::getUID($handle);
         $_SESSION['location'] = User::getLocation($_SESSION['uid'], $user->access_token);
         $_SESSION['location_str'] = 'Location: Hyperspace';
