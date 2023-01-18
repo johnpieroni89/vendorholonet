@@ -91,8 +91,17 @@ class User {
         return $resp;
     }
 
-    static function getLocation(string $uid, string $access_token) {
+    /**
+     * Get Location from Character's UID from SWC API
+     * @param string $uid
+     * @param string $access_token
+     * @return Point|null
+     */
+    static function getLocation(string $uid, string $access_token): ?Point {
         $resp = json_decode(file_get_contents('https://www.swcombine.com/ws/v2.0/location/characters/'.$uid.'.json?access_token='.$access_token), true);
-        return $resp;
+        if(isset($resp['swcapi']['location']['coordinates']['galaxy']['attributes'])) {
+            $location = $resp['swcapi']['location']['coordinates']['galaxy']['attributes'];
+            return new Point($location['x'], $location['y']);
+        }
     }
 }
