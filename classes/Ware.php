@@ -5,6 +5,7 @@ class Ware {
      * @property int $id
      * @property int $vendor_id
      * @property string $type
+     * @property string $name
      * @property int $quantity
      * @property int $price
      * @property string $currency
@@ -14,6 +15,7 @@ class Ware {
     public $id;
     public $vendor_id;
     public $type;
+    public $name;
     public $quantity;
     public $price;
     public $currency;
@@ -24,6 +26,7 @@ class Ware {
         $this->id = $ware->id;
         $this->vendor_id = $ware->vendor_id;
         $this->type = $ware->type;
+        $this->name = $ware->name;
         $this->quantity = $ware->quantity;
         $this->price = $ware->price;
         $this->currency = $ware->currency;
