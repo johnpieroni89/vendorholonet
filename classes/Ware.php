@@ -88,8 +88,6 @@ class Ware {
 
         $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
         $type = mysqli_real_escape_string($db->connection, $type);
-        $quantity = mysqli_real_escape_string($db->connection, $quantity);
-        $price = mysqli_real_escape_string($db->connection, $price);
         $currency = mysqli_real_escape_string($db->connection, $currency);
         $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
         $imgLarge = mysqli_real_escape_string($db->connection, $imgLarge);
