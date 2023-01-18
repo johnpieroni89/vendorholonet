@@ -82,17 +82,18 @@ class Ware {
      * @param string $imgLarge
      * @return void
      */
-    static function parseWare(int $vendor_id, string $type, int $quantity, int $price, string $currency, string $imgSmall, string $imgLarge) {
+    static function parseWare(int $vendor_id, string $type, string $name, int $quantity, int $price, string $currency, string $imgSmall, string $imgLarge) {
         $db = new Database();
         $db->connect();
 
         $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
         $type = mysqli_real_escape_string($db->connection, $type);
+        $name = mysqli_real_escape_string($db->connection, $name);
         $currency = mysqli_real_escape_string($db->connection, $currency);
         $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
         $imgLarge = mysqli_real_escape_string($db->connection, $imgLarge);
 
         mysqli_query($db->connection, "INSERT INTO vendors_wares (vendor_id, type, quantity, price, currency, imgSmall, imgLarge) 
-                     VALUES ('$vendor_id', '$type', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
+                     VALUES ('$vendor_id', '$type', '$name', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
     }
 }

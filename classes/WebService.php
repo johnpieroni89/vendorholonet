@@ -61,7 +61,7 @@ class WebService {
                     if ($ware) {
                         if ($vendor_id && isset($ware['type']) && $ware['quantity'] && $ware['price'] && $ware['currency'] && $ware['images']['small'] && $ware['images']['large']) {
                             $quantity = str_replace(',', '', $ware['quantity']);
-                            Ware::parseWare($vendor_id, $ware['type'], $quantity, $ware['price'], $ware['currency'], $ware['images']['small'], $ware['images']['large']);
+                            Ware::parseWare($vendor_id, $ware['type'], $ware['name'], $quantity, $ware['price'], $ware['currency'], $ware['images']['small'], $ware['images']['large']);
                         }
                     }
                 }
