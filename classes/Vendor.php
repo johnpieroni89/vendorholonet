@@ -115,15 +115,17 @@ class Vendor {
             if($_SESSION['location']) {
                 $distance = max(abs($vendor->location->galaxyCoords->x - $_SESSION['location']->x), abs($vendor->location->galaxyCoords->y - $_SESSION['location']->y));
             }
-            echo '
-                <tr>
-                    <td>'.$vendor->id.'</td>
-                    <td>'.$vendor->name.'</td>
-                    <td>'.$vendor->owner.'</td>
-                    <td>'.count($wares).'</td>
-                    <td>'.$distance.'</td>
-                </tr>
-            ';
+            if(count($wares)) {
+                echo '
+                    <tr>
+                        <td>'.$vendor->id.'</td>
+                        <td>'.$vendor->name.'</td>
+                        <td>'.$vendor->owner.'</td>
+                        <td>'.count($wares).'</td>
+                        <td>'.$distance.'</td>
+                    </tr>
+                ';
+            }
         }
 
         echo '                    
