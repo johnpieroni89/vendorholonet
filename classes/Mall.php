@@ -11,7 +11,7 @@ class Mall
     static function getMalls(int $vendorDensity = 5, int $uniqueOwners = 5): ?array {
         $malls = Mall::findMallContainers($vendorDensity);
         $malls = Mall::filterMallsByUniqueOwners($malls, $uniqueOwners);
-        Mall::sortMalls($malls);
+        usort($malls, function($a, $b) { return $a->owners < $b->owners;});
         return $malls;
     }
 
