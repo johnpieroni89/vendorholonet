@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} www.vendor-holonet.xyz
+RewriteRule (.*) http://vendor-holonet.xyz/$1 [R=301,L]
