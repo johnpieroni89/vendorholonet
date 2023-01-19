@@ -95,7 +95,8 @@ class Mall
                         </table>
                     </div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
-                        (Travel Button soon!)
+                        <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$mall->location->galaxyCoords->x.'&galY='.$mall->location->galaxyCoords->y.'&sysX='.$mall->location->systemCoords->x.'&sysY='.$mall->location->systemCoords->y.'&surfX='.$mall->location->surfaceCoords->x.'&surfY='.$mall->location->surfaceCoords->y.'&groundX='.$mall->location->groundCoords->x.'&groundY='.$mall->location->groundCoords->y.'">
+                        <button class="btn btn-primary" style="width: 100%">Travel</button></a>
                     </div>
                 </div>
             ';
