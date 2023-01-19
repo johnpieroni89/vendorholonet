@@ -1,7 +1,7 @@
 <?php
 
 class WebService {
-    const VENDOR_API = 'http://www.swcombine.com/ws/v2.0/market/vendors.json';
+    const VENDOR_API = 'https://www.swcombine.com/ws/v2.0/market/vendors.json';
 
     /**
      * return data from swc api endpoint

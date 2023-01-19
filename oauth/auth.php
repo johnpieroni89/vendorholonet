@@ -3,7 +3,7 @@
 include('../autoload.php');
 
 if($_GET['code']) {
-    $url = 'http://www.swcombine.com/ws/oauth2/token/';
+    $url = 'https://www.swcombine.com/ws/oauth2/token/';
     $data = array(
         'code' => $_GET['code'],
         'client_id' => SWC_API_CLIENT_ID,
@@ -30,7 +30,7 @@ if($_GET['code']) {
 }
 
 if($result){
-    $url = 'http://www.swcombine.com/ws/v2.0/character/?access_token='.$result->access_token;
+    $url = 'https://www.swcombine.com/ws/v2.0/character/?access_token='.$result->access_token;
     $result = simplexml_load_string(file_get_contents($url, false));
     $result = json_encode($result);
     $result = json_decode($result);
