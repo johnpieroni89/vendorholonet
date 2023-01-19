@@ -23,7 +23,12 @@ class Mall
     static function findMallContainers(int $vendor_density) {
         $db = new Database();
         $db->connect();
-        return mysqli_fetch_all(mysqli_query($db->connection, "SELECT COUNT(`vendor_id`) as `vendors`, `container_uid`, `container` FROM `vendors_locations` GROUP BY `container_uid`, `container` HAVING `vendors` >= '$vendor_density' ORDER BY `vendors` DESC"));
+        $containers = mysqli_query($db->connection, "SELECT COUNT(`vendor_id`) as `vendors`, `container_uid`, `container` FROM `vendors_locations` GROUP BY `container_uid`, `container` HAVING `vendors` >= '$vendor_density' ORDER BY `vendors` DESC");
+        $containersArr = array();
+        while($obj = mysqli_fetch_object($containers)) {
+            $containersArr[] = $obj;
+        }
+        return $containersArr;
     }
 
     /**
