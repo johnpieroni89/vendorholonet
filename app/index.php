@@ -19,7 +19,9 @@ if(!isset($_SESSION['handle'])) {
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Malls</h1>
                         <hr/>
-                        Empty
+                        <?php
+                            var_dump(Mall::getMalls(5, 5));
+                        ?>
                     </div>
                 </main>
                 <?php UserInterface::printFooter(); ?>
