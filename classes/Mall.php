@@ -10,8 +10,8 @@ class Mall
      */
     static function getMalls(int $vendorDensity = 5, int $uniqueOwners = 5) {
         $malls = Mall::findMallContainers($vendorDensity);
-        var_dump($malls);
         $malls = Mall::filterMallsByUniqueOwners($malls, $uniqueOwners);
+        var_dump($malls);
         return $malls;
     }
 
@@ -43,9 +43,9 @@ class Mall
 
         $remainingContainers = array();
         foreach ($containers as $container) {
-            $uniqueCount = mysqli_num_rows(mysqli_query($db->connection, "SELECT DISTINCT `vendors`.`owner` FROM `vendors` LEFT JOIN `vendors_locations` ON `vendors`.`id` = `vendors_locations`.`vendor_id` WHERE `vendors_locations`.`container_uid` = '".$container['container_uid']."'"));
+            $uniqueCount = mysqli_num_rows(mysqli_query($db->connection, "SELECT DISTINCT `vendors`.`owner` FROM `vendors` LEFT JOIN `vendors_locations` ON `vendors`.`id` = `vendors_locations`.`vendor_id` WHERE `vendors_locations`.`container_uid` = '".$container->container_uid."'"));
             if($uniqueCount >= $uniqueTarget) {
-                $container['owners'] = $uniqueCount;
+                $container->owners = $uniqueCount;
                 $remainingContainers[] = $container;
             }
         }
