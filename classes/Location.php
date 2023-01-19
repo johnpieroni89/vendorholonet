@@ -78,6 +78,23 @@ class Location {
         return null;
     }
 
+    /**
+     * Return a vendor's location
+     * @param $container_uid
+     * @return Location|null
+     */
+    static function getMallLocation($container_uid): ?Location {
+        if($container_uid) {
+            $db = new Database();
+            $db->connect();
+            $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE container_uid = '$container_uid'"));
+            if($location) {
+                return new Location($location);
+            }
+        }
+        return null;
+    }
+
     static function deleteAll() {
         $db = new Database();
         $db->connect();

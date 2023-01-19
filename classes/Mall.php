@@ -12,7 +12,19 @@ class Mall
         $malls = Mall::findMallContainers($vendorDensity);
         $malls = Mall::filterMallsByUniqueOwners($malls, $uniqueOwners);
         usort($malls, function($a, $b) { return $a->owners < $b->owners;});
+        $malls = Mall::getMallLocations($malls);
         return $malls;
+    }
+
+    static function getMallLocations(array $containers): ?array {
+        $db = new Database();
+        $db->connect();
+        $containerArr = array();
+        foreach ($containers as $container) {
+            $container->location = Location::getMallLocation($container->container_uid);
+            $containerArr[] = $container;
+        }
+        return $containerArr;
     }
 
     /**
@@ -67,6 +79,11 @@ class Mall
         $malls = Mall::getMalls($vendorDensity, $uniqueOwners);
 
         foreach ($malls as $mall) {
+            $distance = '(In Hyperspace)';
+            if($_SESSION['location']) {
+                $distance = max(abs($mall->location->galaxyCoords->x - $_SESSION['location']->x), abs($mall->location->galaxyCoords->y - $_SESSION['location']->y));
+            }
+
             echo '
                 <div class="col-sm-12 col-md-6 col-lg-3 card p-1 m-2">
                     <div class="card-header bg-light w-100" style="text-align: center;"><h4>'.$mall->container.'</h4></div>
@@ -74,6 +91,7 @@ class Mall
                         <table class="table table-striped table-sm table-bordered">
                             <tr><td>Total Vendors:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->vendors).'</td></tr>
                             <tr><td>Unique Owners:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->owners).'</td></tr>
+                            <tr><td>Distance:</td><td style="text-align: right; padding-right: 10px;">'.$distance.'</td></tr>
                         </table>
                     </div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
