@@ -95,7 +95,7 @@ class Mall
                         </table>
                     </div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
-                        (Location)
+                        (Travel Button soon!)
                     </div>
                 </div>
             ';
