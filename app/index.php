@@ -20,7 +20,7 @@ if(!isset($_SESSION['handle'])) {
                         <h1 class="mt-4">Malls</h1>
                         <hr/>
                         <?php
-                            echo Mall::getMalls(5, 5);
+                            var_dump(Mall::getMalls(5, 5));
                         ?>
                     </div>
                 </main>
