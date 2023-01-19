@@ -81,12 +81,6 @@ class UserInterface
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                                 Wares
                             </a>
-                            
-                            <div class="sb-sidenav-menu-heading">Metrics</div>
-                            <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
-                                Prices
-                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
