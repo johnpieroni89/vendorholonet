@@ -85,7 +85,7 @@ class Mall
             }
 
             echo '
-                <div class="col-sm-12 col-md-5 col-lg-3 card p-2 m-1">
+                <div class="col-sm-12 col-md-5 col-lg-4 col-xl-3 card p-2 m-2">
                     <div class="card-header bg-light w-100" style="text-align: center;"><h4>'.$mall->container.'</h4></div>
                     <div class="card-body d-grid w-100" style="text-align: center;">
                         <table class="table table-striped table-sm table-bordered">
