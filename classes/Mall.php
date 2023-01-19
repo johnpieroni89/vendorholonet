@@ -11,6 +11,7 @@ class Mall
     static function getMalls(int $vendorDensity = 5, int $uniqueOwners = 5): ?array {
         $malls = Mall::findMallContainers($vendorDensity);
         $malls = Mall::filterMallsByUniqueOwners($malls, $uniqueOwners);
+        Mall::sortMalls($malls);
         return $malls;
     }
 
@@ -51,6 +52,15 @@ class Mall
             }
         }
         return $remainingContainers;
+    }
+
+    static function sortMalls(array $containers) {
+        usort($containers, Mall::sortByOwners());
+    }
+
+    static function sortByOwners($a, $b): int {
+        if($a->owners==$b->owners) return 0;
+        return ($a->owners<$b->owners)?-1:1;
     }
 
     static function printMalls(int $vendorDensity = 5, int $uniqueOwners = 5): void {
