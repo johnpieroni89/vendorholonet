@@ -65,6 +65,25 @@ class Ware {
         return $wareArr;
     }
 
+    /**
+     * Get count of wares for entire mall
+     * @param string $container_uid
+     * @return int
+     */
+    static function getMallWares(string $container_uid) {
+        $db = new Database();
+        $db->connect();
+        $mallVendors = mysqli_query($db->connection, "SELECT vendors.id FROM vendors LEFT JOIN vendors_locations ON vendors.id = vendors_locations.vendor_id WHERE vendors_locations.container_uid = '$container_uid'");
+
+        $wareCount = 0;
+        while($row = mysqli_fetch_object($mallVendors)) {
+            $vendor = Vendor::getVendor($row->id);
+            $wares = Ware::getVendorWares($vendor);
+            $wareCount += count($wares);
+        }
+        return $wareCount;
+    }
+
     static function getWareTypes() {
         $db = new Database();
         $db->connect();

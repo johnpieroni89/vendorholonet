@@ -91,6 +91,7 @@ class Mall
                         <table class="table table-striped table-sm table-bordered">
                             <tr><td>Total Vendors:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->vendors).'</td></tr>
                             <tr><td>Unique Owners:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->owners).'</td></tr>
+                            <tr><td>Total Wares:</td><td style="text-align: right; padding-right: 10px;">'.number_format(Ware::getMallWares($mall->container_uid)).'</td></tr>
                             <tr><td>Distance:</td><td style="text-align: right; padding-right: 10px;">'.$distance.'</td></tr>
                         </table>
                     </div>
