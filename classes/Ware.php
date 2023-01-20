@@ -189,6 +189,7 @@ class Ware {
                             <tr>
                                 <th>ID</th>
                                 <th>Type</th>
+                                <th>Img</th>
                                 <th>Qty</th>
                                 <th>Price</th>
                                 <th>Vendor</th>
@@ -199,6 +200,7 @@ class Ware {
                             <tr>
                                 <th>ID</th>
                                 <th>Type</th>
+                                <th>Img</th>
                                 <th>Qty</th>
                                 <th>Price</th>
                                 <th>Vendor</th>
@@ -217,6 +219,7 @@ class Ware {
                 <tr>
                     <td>'.$ware->vendor_id.'</td>
                     <td>'.$ware->type.'</td>
+                    <td><img height="70" width="70" src="'.$ware->imgSmall.'"/></td>
                     <td>'.$ware->quantity.'</td>
                     <td>'.$ware->price.'</td>
                     <td>'.$vendor->name.'</td>

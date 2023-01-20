@@ -75,6 +75,7 @@ if(!isset($_SESSION['handle'])) {
                 columns: [
                     { data: 'id', render: DataTable.render.number() },
                     { data: 'type' },
+                    { data: 'image' },
                     { data: 'quantity', render: DataTable.render.number() },
                     { data: 'price', render: DataTable.render.number() },
                     { data: 'vendor', render: function (data, type, row) {
@@ -82,10 +83,16 @@ if(!isset($_SESSION['handle'])) {
                         } },
                     { data: 'distance', render: DataTable.render.number() }
                 ],
-                columnDefs: [{
-                    targets: [2, 3, 5],
-                    className: 'dt-body-right'
-                }],
+                columnDefs: [
+                    {
+                        targets: [2],
+                        className: 'dt-body-center'
+                    },
+                    {
+                        targets: [3, 4, 6],
+                        className: 'dt-body-right'
+                    }
+                ],
                 search: { search: '<?php echo $search; ?>' },
                 order: [[3, 'asc']]
             });
