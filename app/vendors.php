@@ -19,7 +19,13 @@ if(!isset($_SESSION['handle'])) {
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Vendors</h1>
                         <hr/>
-                        <?php Vendor::printVendorTable(Vendor::getAll()); ?>
+                        <?php
+                            if(isset($_GET['container_uid'])) {
+                                Vendor::printVendorTable(Vendor::getAll());
+                            } else {
+                                Vendor::printVendorTable(Vendor::getAll());
+                            }
+                        ?>
                     </div>
                 </main>
                 <?php UserInterface::printFooter(); ?>

@@ -40,10 +40,17 @@ class Vendor {
     /**
      * @return Vendor[]
      */
-    static function getAll() {
+    static function getAll(string $container_uid = '') {
         $db = new Database();
         $db->connect();
-        $vendorQuery = mysqli_query($db->connection, "SELECT id FROM vendors ORDER BY name");
+
+        if($container_uid) {
+            $container_uid = mysqli_real_escape_string($db->connection, $container_uid);
+            $vendorQuery = mysqli_query($db->connection, "SELECT vendors.id FROM vendors LEFT JOIN vendors_locations ON vendors.id = vendors_locations.vendor_id WHERE vendors_locations.container_uid = '$container_uid' ORDER BY name");
+        } else {
+            $vendorQuery = mysqli_query($db->connection, "SELECT id FROM vendors ORDER BY name");
+        }
+
         $vendorArr = array();
         while($row = mysqli_fetch_object($vendorQuery)) {
             $vendorArr[] = Vendor::getVendor($row->id);

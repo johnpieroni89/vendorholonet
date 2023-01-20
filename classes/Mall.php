@@ -92,7 +92,7 @@ class Mall
                     <div class="card-header bg-light w-100" style="text-align: center;"><h4>'.$mall->container.'</h4></div>
                     <div class="card-body d-grid w-100" style="text-align: center;">
                         <table class="table table-striped table-sm table-bordered">
-                            <tr><td>Total Vendors:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->vendors).'</td></tr>
+                            <tr><td>Total Vendors:</td><td style="text-align: right; padding-right: 10px;"><a href="vendors.php?container_uid='.$mall->container_uid.'">'.number_format($mall->vendors).'</a></td></tr>
                             <tr><td>Unique Owners:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->owners).'</td></tr>
                             <tr><td>Total Wares:</td><td style="text-align: right; padding-right: 10px;">'.number_format(Ware::getMallWares($mall->container_uid)).'</td></tr>
                             <tr><td>Distance:</td><td style="text-align: right; padding-right: 10px;">'.$distance.'</td></tr>
