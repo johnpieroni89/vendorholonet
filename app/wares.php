@@ -42,7 +42,7 @@ if(!isset($_SESSION['handle'])) {
                             if(isset($_GET['type'])) {
                                 $wares = Ware::getWaresByType($_GET['type']);
                                 Ware::printWareTable($wares);
-                            } elseif($_GET['container_uid']) {
+                            } elseif(isset($_GET['container_uid'])) {
                                 $wares = Ware::getWaresByContainer($_GET['container_uid']);
                                 Ware::printWareTable($wares);
                             } else {
