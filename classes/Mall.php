@@ -38,7 +38,10 @@ class Mall
         $containers = mysqli_query($db->connection, "SELECT COUNT(`vendor_id`) as `vendors`, `container_uid`, `container` FROM `vendors_locations` GROUP BY `container_uid`, `container` HAVING `vendors` >= '$vendor_density' ORDER BY `vendors` DESC");
         $containersArr = array();
         while($obj = mysqli_fetch_object($containers)) {
-            if($obj->container_uid[0] == 5 || $obj->container_uid[0] == 7 || $obj->container_uid[0] == 4) {
+            if( // we only like malls that are stationary
+                substr($obj->container_uid, 0, 2) == '5:' || // if container is a station
+                substr($obj->container_uid, 0, 2) == '7:' || // if container is a city
+                substr($obj->container_uid, 0, 2) == '4:') { // if container is a facility
                 $containersArr[] = $obj;
             }
         }
