@@ -21,7 +21,7 @@ if(!isset($_SESSION['handle'])) {
                         <hr/>
                         <?php
                             if(isset($_GET['container_uid'])) {
-                                Vendor::printVendorTable(Vendor::getAll());
+                                Vendor::printVendorTable(Vendor::getAll($_GET['container_uid']));
                             } else {
                                 Vendor::printVendorTable(Vendor::getAll());
                             }
