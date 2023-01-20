@@ -125,8 +125,8 @@ class Ware {
         $container_uid = mysqli_real_escape_string($db->connection, $container_uid);
         $wareQuery = mysqli_query($db->connection, "
                                 SELECT vendors_wares.id, vendors_wares.vendor_id, vendors_wares.type, vendors_wares.quantity, vendors_wares.price 
-                                FROM vendors_wares LEFT JOIN vendor_locations ON vendor_wares.vendor_id = vendor_locations.vendor_id 
-                                WHERE vendor_locations.container_uid = '$container_uid' ORDER BY price ASC");
+                                FROM vendors_wares LEFT JOIN vendors_locations ON vendors_wares.vendor_id = vendors_locations.vendor_id 
+                                WHERE vendors_locations.container_uid = '$container_uid' ORDER BY price ASC");
         $wareArr = array();
 
         while($row = mysqli_fetch_object($wareQuery)) {
