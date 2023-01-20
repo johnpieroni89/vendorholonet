@@ -218,7 +218,7 @@ class Ware {
             echo '
                 <tr>
                     <td>'.$ware->vendor_id.'</td>
-                    <td><h6 class="m-0 p-0>"'.$ware->type.'</td><i>'.$ware->name.'</i></td>
+                    <td><h6 class="m-0 p-0>"'.$ware->type.'</h6><i>'.$ware->name.'</i></td>
                     <td><img height="70" width="70" src="'.$ware->imgSmall.'"/></td>
                     <td>'.$ware->quantity.'</td>
                     <td>'.$ware->price.'</td>
