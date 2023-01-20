@@ -16,3 +16,17 @@ Star Wars Combine Vendor Holonet
 3. Register your new application at https://www.swcombine.com/ws/registration/
 4. Rename config.example.php to config.php and adjust parameters accordingly to connect to your database and the SWC API endpoint
 5. Setup a cron job for the vendor data collection: * */8 * * * /usr/bin/php /var/www/html/scripts/updateVendors.php
+
+## Examples
+
+### Malls
+![Screenshot](app/assets/img/examples/malls.png)
+
+### Vendors
+![Screenshot](app/assets/img/examples/vendors.png)
+
+### Wares
+![Screenshot](app/assets/img/examples/wares.png)
+
+### Vendor Profile
+![Screenshot](app/assets/img/examples/vendor_profile.png)
