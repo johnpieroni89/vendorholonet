@@ -2,6 +2,13 @@
 
 class UserInterface
 {
+    static function siteURL() {
+        $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ||
+            $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $domainName = $_SERVER['HTTP_HOST'];
+        return $protocol.$domainName;
+    }
+
     static function printHead() {
         $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
         echo '
@@ -14,7 +21,7 @@ class UserInterface
                 
                 <meta property="og:title" content="Vendor Holonet" />
                 <meta property="og:description" content="Browse Vendors and their wares from one source!" />
-                <meta property="og:image" content="'.$protocol.$_SERVER['HTTP_HOST'].'/app/assets/img/logo-large.png" />
+                <meta property="og:image" content="'.UserInterface::siteURL().'/app/assets/img/logo-large.png" />
                 
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
