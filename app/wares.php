@@ -94,7 +94,7 @@ if(!isset($_SESSION['handle'])) {
                     },
                     {
                         targets: [0, 1, 2, 3, 4, 5, 6],
-                        className: 'align-middle p-1'
+                        className: 'align-middle p-2'
                     }
                 ],
                 search: { search: '<?php echo $search; ?>' },
