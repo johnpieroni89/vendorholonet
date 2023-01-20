@@ -69,21 +69,23 @@ class Ware {
     /**
      * Get count of wares for entire mall
      * @param string $container_uid
+     * @param bool $unique
      * @return int
      */
-    static function getMallWares(string $container_uid) {
+    static function getMallWares(string $container_uid, bool $unique = false) {
         $db = new Database();
         $db->connect();
         $container_uid = mysqli_real_escape_string($db->connection, $container_uid);
-        $mallVendors = mysqli_query($db->connection, "SELECT vendors.id FROM vendors LEFT JOIN vendors_locations ON vendors.id = vendors_locations.vendor_id WHERE vendors_locations.container_uid = '$container_uid'");
 
-        $wareCount = 0;
-        while($row = mysqli_fetch_object($mallVendors)) {
-            $vendor = Vendor::getVendor($row->id);
-            $wares = Ware::getVendorWares($vendor);
-            $wareCount += count($wares);
+        if($unique) {
+            $mallVendors = mysqli_query($db->connection, "SELECT DISTINCT `vendors_wares`.`type` FROM `vendors_wares` LEFT JOIN `vendors_locations` ON `vendors_wares`.`vendor_id` = `vendors_locations`.`vendor_id` WHERE `vendors_locations`.`container_uid` = '$container_uid'");
+            $total = mysqli_num_rows($mallVendors);
+        } else {
+            $mallVendors = mysqli_fetch_object(mysqli_query($db->connection, "SELECT COUNT(`vendors_wares`.`id`) AS `total` FROM `vendors_wares` LEFT JOIN `vendors_locations` ON `vendors_wares`.`vendor_id` = `vendors_locations`.`vendor_id` WHERE `vendors_locations`.`container_uid` = '$container_uid'"));
+            $total = $mallVendors->total;
         }
-        return $wareCount;
+
+        return $total;
     }
 
     static function getWareTypes() {

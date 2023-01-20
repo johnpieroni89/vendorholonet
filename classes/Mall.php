@@ -97,6 +97,7 @@ class Mall
                             <tr><td>Total Vendors:</td><td style="text-align: right; padding-right: 10px;"><a href="vendors.php?container_uid='.$mall->container_uid.'">'.number_format($mall->vendors).'</a></td></tr>
                             <tr><td>Unique Owners:</td><td style="text-align: right; padding-right: 10px;">'.number_format($mall->owners).'</td></tr>
                             <tr><td>Total Wares:</td><td style="text-align: right; padding-right: 10px;"><a href="wares.php?container_uid='.$mall->container_uid.'">'.number_format(Ware::getMallWares($mall->container_uid)).'</a></td></tr>
+                            <tr><td>Unique Wares:</td><td style="text-align: right; padding-right: 10px;">'.number_format(Ware::getMallWares($mall->container_uid, true)).'</td></tr>
                             <tr><td>Distance:</td><td style="text-align: right; padding-right: 10px;">'.$distance.'</td></tr>
                         </table>
                     </div>
