@@ -42,6 +42,9 @@ if(!isset($_SESSION['handle'])) {
                             if(isset($_GET['type'])) {
                                 $wares = Ware::getWaresByType($_GET['type']);
                                 Ware::printWareTable($wares);
+                            } elseif($_GET['container_uid']) {
+                                $wares = Ware::getWaresByContainer($_GET['container_uid']);
+                                Ware::printWareTable($wares);
                             } else {
                                 echo '<center><h5>Please select a type in the form above!</h5></center>';
                             }
