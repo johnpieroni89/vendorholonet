@@ -35,6 +35,7 @@ class Mall
     static function findMallContainers(int $vendor_density): ?array {
         $db = new Database();
         $db->connect();
+        $vendor_density = mysqli_real_escape_string($db->connection, $vendor_density);
         $containers = mysqli_query($db->connection, "SELECT COUNT(`vendor_id`) as `vendors`, `container_uid`, `container` FROM `vendors_locations` GROUP BY `container_uid`, `container` HAVING `vendors` >= '$vendor_density' ORDER BY `vendors` DESC");
         $containersArr = array();
         while($obj = mysqli_fetch_object($containers)) {
@@ -60,7 +61,8 @@ class Mall
 
         $remainingContainers = array();
         foreach ($containers as $container) {
-            $uniqueCount = mysqli_num_rows(mysqli_query($db->connection, "SELECT DISTINCT `vendors`.`owner` FROM `vendors` LEFT JOIN `vendors_locations` ON `vendors`.`id` = `vendors_locations`.`vendor_id` WHERE `vendors_locations`.`container_uid` = '".$container->container_uid."'"));
+            $container_uid = mysqli_real_escape_string($db->connection, $container->container_uid);
+            $uniqueCount = mysqli_num_rows(mysqli_query($db->connection, "SELECT DISTINCT `vendors`.`owner` FROM `vendors` LEFT JOIN `vendors_locations` ON `vendors`.`id` = `vendors_locations`.`vendor_id` WHERE `vendors_locations`.`container_uid` = '".$container_uid."'"));
             if($uniqueCount >= $uniqueTarget) {
                 $container->owners = $uniqueCount;
                 $remainingContainers[] = $container;

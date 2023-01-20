@@ -56,7 +56,8 @@ class Ware {
     static function getVendorWares(Vendor $vendor): array {
         $db = new Database();
         $db->connect();
-        $wareQuery = mysqli_query($db->connection, "SELECT id FROM vendors_wares WHERE vendor_id = '$vendor->id'");
+        $vendor_id = mysqli_real_escape_string($db->connection, $vendor->id);
+        $wareQuery = mysqli_query($db->connection, "SELECT id FROM vendors_wares WHERE vendor_id = '$vendor_id'");
         $wareArr = array();
 
         while($row = mysqli_fetch_object($wareQuery)) {
@@ -73,6 +74,7 @@ class Ware {
     static function getMallWares(string $container_uid) {
         $db = new Database();
         $db->connect();
+        $container_uid = mysqli_real_escape_string($db->connection, $container_uid);
         $mallVendors = mysqli_query($db->connection, "SELECT vendors.id FROM vendors LEFT JOIN vendors_locations ON vendors.id = vendors_locations.vendor_id WHERE vendors_locations.container_uid = '$container_uid'");
 
         $wareCount = 0;
@@ -162,6 +164,8 @@ class Ware {
         $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
         $type = mysqli_real_escape_string($db->connection, $type);
         $name = mysqli_real_escape_string($db->connection, $name);
+        $quantity = mysqli_real_escape_string($db->connection, $quantity);
+        $price = mysqli_real_escape_string($db->connection, $price);
         $currency = mysqli_real_escape_string($db->connection, $currency);
         $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
         $imgLarge = mysqli_real_escape_string($db->connection, $imgLarge);

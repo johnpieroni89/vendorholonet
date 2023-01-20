@@ -123,29 +123,4 @@ class UserInterface
             <!-- Chart.js --> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> <!-- https://www.w3schools.com/js/js_graphics_chartjs.asp -->
         ';
     }
-
-    static function printCharts() {
-        echo '
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-area me-1"></i>
-                            Area Chart Example
-                        </div>
-                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-bar me-1"></i>
-                            Bar Chart Example
-                        </div>
-                        <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-            </div>
-        ';
-    }
 }

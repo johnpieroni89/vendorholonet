@@ -70,6 +70,7 @@ class Location {
         if($vendor_id) {
             $db = new Database();
             $db->connect();
+            $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
             $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE vendor_id = '$vendor_id'"));
             if($location) {
                 return new Location($location);
@@ -87,6 +88,7 @@ class Location {
         if($container_uid) {
             $db = new Database();
             $db->connect();
+            $container_uid = mysqli_real_escape_string($db->connection, $container_uid);
             $location = mysqli_fetch_object(mysqli_query($db->connection, "SELECT * FROM vendors_locations WHERE container_uid = '$container_uid'"));
             if($location) {
                 return new Location($location);
@@ -142,11 +144,22 @@ class Location {
         $db = new Database();
         $db->connect();
 
+        $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
         $container = mysqli_real_escape_string($db->connection, $container);
+        $container_uid = mysqli_real_escape_string($db->connection, $container_uid);
         $sector = mysqli_real_escape_string($db->connection, $sector);
         $system = mysqli_real_escape_string($db->connection, $system);
         $planet = mysqli_real_escape_string($db->connection, $planet);
         $city = mysqli_real_escape_string($db->connection, $city);
+        $city_uid = mysqli_real_escape_string($db->connection, $city_uid);
+        $galx = mysqli_real_escape_string($db->connection, $galx);
+        $galy = mysqli_real_escape_string($db->connection, $galy);
+        $sysx = mysqli_real_escape_string($db->connection, $sysx);
+        $sysy = mysqli_real_escape_string($db->connection, $sysy);
+        $surfx = mysqli_real_escape_string($db->connection, $surfx);
+        $surfy = mysqli_real_escape_string($db->connection, $surfy);
+        $groundx = mysqli_real_escape_string($db->connection, $groundx);
+        $groundy = mysqli_real_escape_string($db->connection, $groundy);
 
         mysqli_query($db->connection, "INSERT INTO vendors_locations (vendor_id, container, container_uid, sector, `system`, planet, city, city_uid, galx, galy, sysx, sysy, surfx, surfy, groundx, groundy) 
         VALUES ('$vendor_id', '$container', '$container_uid', '$sector', '$system', '$planet', '$city', '$city_uid', 
