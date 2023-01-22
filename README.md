@@ -13,9 +13,10 @@ Star Wars Combine Vendor Holonet
 1. Download this Git repository
 2. Ensure your web server has a domain name and utilizes https (recommend certbot on Linux system for easy SSL cert setup)
 3. Setup your mysql database and import the /database/id20150352_vendor_holonet.sql file
-3. Register your new application at https://www.swcombine.com/ws/registration/
-4. Rename config.example.php to config.php and adjust parameters accordingly to connect to your database and the SWC API endpoint
-5. Setup a cron job for the vendor data collection: 0 */8 * * * /usr/bin/php /var/www/html/scripts/updateVendors.php
+4. Register your new application at https://www.swcombine.com/ws/registration/
+5. Rename config.example.php to config.php and adjust parameters accordingly to connect to your database and the SWC API endpoint
+6. Setup cron job for the vendor data: 0 */8 * * * /usr/bin/php /var/www/html/scripts/updateVendors.php
+7. Setup cron job for session purging: 0,30 * * * * /usr/bin/php /var/www/html/scripts/purgeSessions.php
 
 ## Examples
 

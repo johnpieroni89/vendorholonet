@@ -13,6 +13,7 @@ include('classes/UserInterface.php');
 include('classes/WebService.php');
 
 if(isset($_SESSION['handle'])) {
+    WebService::updateSession($_SESSION['handle']);
     $user = User::getUser($_SESSION['handle']);
 
     // refresh location data

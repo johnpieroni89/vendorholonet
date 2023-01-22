@@ -74,5 +74,36 @@ class WebService {
         }
     }
 
+    static function updateSession($handle) {
+        $db = new Database();
+        $db->connect();
+        $handle = mysqli_real_escape_string($db->connection, $handle);
+
+        if(self::checkSession($handle)) {
+            $time = time();
+            mysqli_query($db->connection, "UPDATE sessions SET date_active = '$time' WHERE handle = '$handle'");
+        } else {
+            mysqli_query($db->connection, "INSERT INTO sessions (handle) VALUES ('$handle')");
+        }
+    }
+
+    function purgeSessions() {
+        $db = new Database();
+        $db->connect();
+        $time_cutoff = time() - (60 * 30);
+        mysqli_query($db->connection, "DELETE FROM sessions WHERE date_active < '$time_cutoff'");
+    }
+
+    static function checkSession(string $handle) {
+        $db = new Database();
+        $db->connect();
+        $time_cutoff = time() - (60 * 30);
+        $handle = mysqli_real_escape_string($db->connection, $handle);
+        if(mysqli_query($db->connection, "SELECT id FROM sessions WHERE handle = '$handle'")) {
+            return true;
+        }
+        return false;
+    }
+
 
 }
