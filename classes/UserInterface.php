@@ -42,7 +42,7 @@ class UserInterface
     static function printNav() {
         $admin = '';
         if($_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
-            $admin = '<li><a class="dropdown-item" href="'.UserInterface::siteURL().'/admin">Admin Panel</a></li>';
+            $admin = '<li><a class="dropdown-item" href="'.UserInterface::siteURL().'/app/admin">Admin Panel</a></li>';
         }
 
         echo '
