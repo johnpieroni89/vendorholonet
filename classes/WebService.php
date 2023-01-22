@@ -97,9 +97,8 @@ class WebService {
     static function checkSession(string $handle) {
         $db = new Database();
         $db->connect();
-        $time_cutoff = time() - (60 * 30);
         $handle = mysqli_real_escape_string($db->connection, $handle);
-        if(mysqli_query($db->connection, "SELECT id FROM sessions WHERE handle = '$handle'")) {
+        if(mysqli_num_rows(mysqli_query($db->connection, "SELECT id FROM sessions WHERE handle = '$handle'"))) {
             return true;
         }
         return false;
