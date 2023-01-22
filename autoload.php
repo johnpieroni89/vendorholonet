@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+date_default_timezone_set('America/Chicago');
 session_start();
 include('config.php');
 include('classes/Database.php');
