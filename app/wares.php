@@ -28,7 +28,7 @@ if(!isset($_SESSION['handle'])) {
                                     <?php
                                         $types = Ware::getWareTypes();
                                         foreach ($types as $type) {
-                                            echo '<option value="'.$type.'">'.$type.'</option>';
+                                            echo '<option value="'.$type.'">'.ucfirst($type).'</option>';
                                         }
                                     ?>
                                     </select>
