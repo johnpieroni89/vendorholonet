@@ -20,11 +20,11 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Malls</h1>
+                <h1 class="mt-4">Admin</h1>
                 <hr/>
                 <div class="container-fluid">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                        <a href="sessions.php">Sessions</a>
+                        <a href="sessions.php"><button><i class="fa-solid fa-users-viewfinder"></i> Sessions</button></a>
                     </div>
                 </div>
             </div>

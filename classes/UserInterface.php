@@ -40,6 +40,11 @@ class UserInterface
     }
 
     static function printNav() {
+        $admin = '';
+        if($_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
+            $admin = '<li><a class="dropdown-item" href="'.UserInterface::siteURL().'/admin">Admin Panel</a></li>';
+        }
+
         echo '
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 <!-- Navbar Brand-->
@@ -59,6 +64,7 @@ class UserInterface
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            '.$admin.'
                             <li><a class="dropdown-item" href="'.UserInterface::siteURL().'/index.php">Logout</a></li>
                         </ul>
                     </li>
