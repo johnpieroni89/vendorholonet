@@ -91,7 +91,7 @@ class WebService {
     function purgeSessions() {
         $db = new Database();
         $db->connect();
-        $time_cutoff = time() - (60 * 30);
+        $time_cutoff = time() - (60 * 10);
         mysqli_query($db->connection, "DELETE FROM sessions WHERE date_active < '$time_cutoff'");
     }
 

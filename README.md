@@ -16,7 +16,7 @@ Star Wars Combine Vendor Holonet
 4. Register your new application at https://www.swcombine.com/ws/registration/
 5. Rename config.example.php to config.php and adjust parameters accordingly to connect to your database and the SWC API endpoint
 6. Setup cron job for the vendor data: 0 */8 * * * /usr/bin/php /var/www/html/scripts/updateVendors.php
-7. Setup cron job for session purging: 0,30 * * * * /usr/bin/php /var/www/html/scripts/purgeSessions.php
+7. Setup cron job for session purging: 0,10,20,30,40,50 * * * * /usr/bin/php /var/www/html/scripts/purgeSessions.php
 
 ## Examples
 
