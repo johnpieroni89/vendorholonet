@@ -165,7 +165,7 @@ class Ware {
 
         $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
         $type = mysqli_real_escape_string($db->connection, $type);
-        $name = mysqli_real_escape_string($db->connection, $name);
+        $name = ucfirst(mysqli_real_escape_string($db->connection, $name));
         $quantity = mysqli_real_escape_string($db->connection, $quantity);
         $price = mysqli_real_escape_string($db->connection, $price);
         $currency = mysqli_real_escape_string($db->connection, $currency);
