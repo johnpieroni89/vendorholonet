@@ -58,7 +58,7 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
                                     <tr>
                                         <td>'.$row->id.'</td>
                                         <td>'.$row->handle.'</td>
-                                        <td>'.$row->date_active.'</td>
+                                        <td>'.date('d M Y H:i:s', $row->date_active).'</td>
                                     </tr>
                                 ';
                             }
