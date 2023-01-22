@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 19, 2023 at 12:01 AM
+-- Generation Time: Jan 22, 2023 at 07:51 PM
 -- Server version: 8.0.31-0ubuntu0.20.04.2
 -- PHP Version: 8.1.14
 
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `id20150352_vendor_holonet`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` bigint NOT NULL,
+  `handle` varchar(96) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `date_active` int UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -100,6 +112,12 @@ CREATE TABLE `vendors_wares` (
 --
 
 --
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -126,6 +144,12 @@ ALTER TABLE `vendors_wares`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

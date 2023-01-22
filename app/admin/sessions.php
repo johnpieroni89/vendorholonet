@@ -34,7 +34,7 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
                                 Active Sessions
                             </div>
                             <div class="card-body">
-                                <table id="vendorTable" class="table table-sm table-striped table-responsive table-hover table-bordered">
+                                <table id="sessionTable" class="table table-sm table-striped table-responsive table-hover table-bordered">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -76,4 +76,27 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
 </div>
 <?php UserInterface::printScripts(1); ?>
 </body>
+<script>
+    <?php
+    $search = '';
+    if(isset($_GET['search'])) {
+        $search = $_GET['search'];
+    }
+    ?>
+    $(document).ready(function () {
+        $('#sessionTable').DataTable({
+            searchable: true,
+            pageLength: 50,
+            lengthMenu: [
+                [10, 25, 50, -1],
+                [10, 25, 50, 'All'],
+            ],
+            columns: [
+                { data: 'id', render: DataTable.render.number() },
+                { data: 'handle' },
+                { data: 'timestamp' },
+            ],
+        });
+    });
+</script>
 </html>

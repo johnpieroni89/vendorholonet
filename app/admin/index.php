@@ -24,7 +24,7 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
                 <hr/>
                 <div class="container-fluid">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-                        <a href="sessions.php"><button><i class="fa-solid fa-users-viewfinder"></i> Sessions</button></a>
+                        <a href="sessions.php"><button class="btn btn-lg btn-primary"><i class="fa-solid fa-users-viewfinder"></i> Sessions</button></a>
                     </div>
                 </div>
             </div>
