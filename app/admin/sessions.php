@@ -12,11 +12,11 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
 
 <!DOCTYPE html>
 <html lang="en">
-<?php UserInterface::printHead(); ?>
+<?php UserInterface::printHead(1); ?>
 <body class="sb-nav-fixed">
-<?php UserInterface::printNav(); ?>
+<?php UserInterface::printNav(1); ?>
 <div id="layoutSidenav">
-    <?php UserInterface::printSideNav(); ?>
+    <?php UserInterface::printSideNav(1); ?>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
@@ -74,9 +74,9 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
                 </div>
             </div>
         </main>
-        <?php UserInterface::printFooter(); ?>
+        <?php UserInterface::printFooter(1); ?>
     </div>
 </div>
-<?php UserInterface::printScripts(); ?>
+<?php UserInterface::printScripts(1); ?>
 </body>
 </html>

@@ -33,7 +33,7 @@ class UserInterface
                 <title>Vendor Holonet</title>
                 <!-- Bootstrap 5 CSS --> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
                 <!-- JQuery 3 + DataTables CSS --> <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/af-2.5.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/kt-2.8.0/r-2.4.0/rg-1.3.0/rr-1.3.1/sc-2.0.7/sb-1.4.0/sp-2.1.0/sl-1.5.0/sr-1.2.0/datatables.min.css"/>
-                <!-- Default CSS --> <link href="css/styles.css" rel="stylesheet" />
+                <!-- Default CSS --> <link href="'.UserInterface::siteURL().'/app/assets/css/styles.css" rel="stylesheet" />
                 <!-- FontAwesome --> <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
             </head>
         ';
@@ -43,7 +43,7 @@ class UserInterface
         echo '
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
                 <!-- Navbar Brand-->
-                <a class="navbar-brand ps-3" href="index.php">Vendor Holonet</a>
+                <a class="navbar-brand ps-3" href="'.UserInterface::siteURL().'/app/index.php">Vendor Holonet</a>
                 <!-- Sidebar Toggle-->
                 <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
  
@@ -59,7 +59,7 @@ class UserInterface
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="../index.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="'.UserInterface::siteURL().'/index.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -72,20 +72,20 @@ class UserInterface
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
-                        <div style="width: 100%; text-align: center;"><img width="100" height="100" src="assets/img/logo-large.png"></div>
+                        <div style="width: 100%; text-align: center;"><img width="100" height="100" src="'.UserInterface::siteURL().'/app/assets/img/logo-large.png"></div>
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="'.UserInterface::siteURL().'/app/index.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-shop"></i></div>
                                 Malls
                             </a>
                             
                             <div class="sb-sidenav-menu-heading">Search</div>
-                            <a class="nav-link" href="vendors.php">
+                            <a class="nav-link" href="'.UserInterface::siteURL().'/app/vendors.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-user-tie"></i></div>
                                 Vendors
                             </a>
-                            <a class="nav-link" href="wares.php">
+                            <a class="nav-link" href="'.UserInterface::siteURL().'/app/wares.php">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
                                 Wares
                             </a>
@@ -119,7 +119,7 @@ class UserInterface
         echo '
             <!-- Bootstrap 5 JS --> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
             <!-- JQuery 3 + DataTables JS --> <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.1/af-2.5.1/b-2.3.3/cr-1.6.1/date-1.2.0/fc-4.2.1/fh-3.3.1/kt-2.8.0/r-2.4.0/rg-1.3.0/rr-1.3.1/sc-2.0.7/sb-1.4.0/sp-2.1.0/sl-1.5.0/sr-1.2.0/datatables.min.js"></script> <!-- https://datatables.net/examples/advanced_init/dom_multiple_elements.html -->
-            <!-- Default JS --> <script type="text/javascript" src="js/scripts.js"></script>
+            <!-- Default JS --> <script type="text/javascript" src="'.UserInterface::siteURL().'/app/assets/js/scripts.js"></script>
             <!-- Chart.js --> <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> <!-- https://www.w3schools.com/js/js_graphics_chartjs.asp -->
         ';
     }
