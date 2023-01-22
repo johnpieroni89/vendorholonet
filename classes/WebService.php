@@ -78,13 +78,12 @@ class WebService {
         $db = new Database();
         $db->connect();
         $handle = mysqli_real_escape_string($db->connection, $handle);
+        $time = time();
 
         if(self::checkSession($handle)) {
-            $datum = new DateTime();
-            $time = $datum->format('Y-m-d H:i:s');
             mysqli_query($db->connection, "UPDATE sessions SET date_active = '$time' WHERE handle = '$handle'");
         } else {
-            mysqli_query($db->connection, "INSERT INTO sessions (handle) VALUES ('$handle')");
+            mysqli_query($db->connection, "INSERT INTO sessions (handle, date_active) VALUES ('$handle', '$time')");
         }
     }
 
