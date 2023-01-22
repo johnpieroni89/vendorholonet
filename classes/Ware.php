@@ -164,15 +164,15 @@ class Ware {
         $db->connect();
 
         $vendor_id = mysqli_real_escape_string($db->connection, $vendor_id);
-        $type = mysqli_real_escape_string($db->connection, $type);
-        $name = ucfirst(mysqli_real_escape_string($db->connection, $name));
+        $type = mysqli_real_escape_string($db->connection, ucfirst($type));
+        $name = mysqli_real_escape_string($db->connection, $name);
         $quantity = mysqli_real_escape_string($db->connection, $quantity);
         $price = mysqli_real_escape_string($db->connection, $price);
         $currency = mysqli_real_escape_string($db->connection, $currency);
         $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
         $imgLarge = mysqli_real_escape_string($db->connection, $imgLarge);
 
-        mysqli_query($db->connection, "INSERT INTO vendors_wares (vendor_id, type, name, quantity, price, currency, imgSmall, imgLarge) 
+        mysqli_query($db->connection, "INSERT INTO vendors_wares (vendor_id, type, `name`, quantity, price, currency, imgSmall, imgLarge) 
                      VALUES ('$vendor_id', '$type', '$name', '$quantity', '$price', '$currency', '$imgSmall', '$imgLarge')");
     }
 
