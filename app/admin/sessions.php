@@ -77,12 +77,6 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
 <?php UserInterface::printScripts(1); ?>
 </body>
 <script>
-    <?php
-    $search = '';
-    if(isset($_GET['search'])) {
-        $search = $_GET['search'];
-    }
-    ?>
     $(document).ready(function () {
         $('#sessionTable').DataTable({
             searchable: true,
@@ -96,6 +90,7 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
                 { data: 'handle' },
                 { data: 'timestamp' },
             ],
+            order: [[2, 'desc']]
         });
     });
 </script>
