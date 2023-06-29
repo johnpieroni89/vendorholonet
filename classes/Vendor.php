@@ -120,7 +120,11 @@ class Vendor {
             $wares = Ware::getVendorWares($vendor);
             $distance = '(In Hyperspace)';
             if($_SESSION['location']) {
-                $distance = max(abs($vendor->location->galaxyCoords->x - $_SESSION['location']->x), abs($vendor->location->galaxyCoords->y - $_SESSION['location']->y));
+                if (isset($vendor->location->galaxyCoords)) {
+                    $distance = max(abs($vendor->location->galaxyCoords->x - $_SESSION['location']->x), abs($vendor->location->galaxyCoords->y - $_SESSION['location']->y));
+                } else {
+                    $distance='Unknown';
+                }
             }
             if(count($wares)) {
                 echo '
@@ -144,6 +148,10 @@ class Vendor {
     }
 
     static function printVendorProfile(Vendor $vendor) {
+        $addon = '';
+            if (isset ($vendor->location->groundCoords)) {
+                $addon = '&surfX='.$vendor->location->surfaceCoords->x.'&surfY='.$vendor->location->surfaceCoords->y.'&groundX='.$vendor->location->groundCoords->x.'&groundY='.$vendor->location->groundCoords->y;
+            }
         echo '
             <div class="container-fluid">
                 <div class="row">
@@ -177,14 +185,14 @@ class Vendor {
                                     '.(($vendor->location->sector) ? 'Sector: '.$vendor->location->sector.'<br/>' : ' ').'
                                     '.((substr($vendor->location->system,0,4) != 'Deep') ? 'System: '.$vendor->location->system.' ('.$vendor->location->galaxyCoords->x.', '.$vendor->location->galaxyCoords->y.')' : 'System: '.$vendor->location->system).' <br/>
                                     '.(($vendor->location->planet) ? 'Planet: '.$vendor->location->planet.' ' : 'Space: ').' ('.$vendor->location->systemCoords->x.', '.$vendor->location->systemCoords->y.')<br/>
-                                    '.(($vendor->location->city) ? 'City: '.$vendor->location->city.' ' : (($vendor->location->surfaceCoords->x) ? 'Surface: ' : '')).'
-                                    '.(($vendor->location->surfaceCoords->x) ? '('.$vendor->location->surfaceCoords->x.', '.$vendor->location->surfaceCoords->y.')<br/>' : '').'
-                                    '.(($vendor->location->groundCoords->x) ? 'Ground: ('.$vendor->location->groundCoords->x.', '.$vendor->location->groundCoords->y.')' : '').'
+                                    '.(($vendor->location->city) ? 'City: '.$vendor->location->city.' ' : (($vendor->location->surfaceCoords) ? 'Surface: ' : '')).'
+                                    '.(($vendor->location->surfaceCoords) ? '('.$vendor->location->surfaceCoords->x.', '.$vendor->location->surfaceCoords->y.')<br/>' : '').'
+                                    '.(($vendor->location->groundCoords) ? 'Ground: ('.$vendor->location->groundCoords->x.', '.$vendor->location->groundCoords->y.')' : '').'
                                 </td></tr>
                             </table>
                         </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;">
-                            <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$vendor->location->galaxyCoords->x.'&galY='.$vendor->location->galaxyCoords->y.'&sysX='.$vendor->location->systemCoords->x.'&sysY='.$vendor->location->systemCoords->y.'&surfX='.$vendor->location->surfaceCoords->x.'&surfY='.$vendor->location->surfaceCoords->y.'&groundX='.$vendor->location->groundCoords->x.'&groundY='.$vendor->location->groundCoords->y.'">
+                            <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$vendor->location->galaxyCoords->x.'&galY='.$vendor->location->galaxyCoords->y.'&sysX='.$vendor->location->systemCoords->x.'&sysY='.$vendor->location->systemCoords->y.$addon.'">
                             <button class="btn btn-primary" style="width: 100%">Travel</button></a></div>
                     </div>
                 </div>

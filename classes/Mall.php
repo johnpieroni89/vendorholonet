@@ -11,7 +11,9 @@ class Mall
     static function getMalls(int $vendorDensity = 5, int $uniqueOwners = 5): ?array {
         $malls = Mall::findMallContainers($vendorDensity);
         $malls = Mall::filterMallsByUniqueOwners($malls, $uniqueOwners);
-        usort($malls, function($a, $b) { return $a->owners < $b->owners;});
+        usort($malls, function($a, $b) { 
+            Self::sortByOwners($a,$b);
+        });
         $malls = Mall::getMallLocations($malls);
         return $malls;
     }
@@ -72,7 +74,9 @@ class Mall
     }
 
     static function sortMalls(array $containers) {
-        usort($containers, Mall::sortByOwners());
+        usort($containers, function($a,$b) {
+            Mall::sortByOwners($a,$b);
+    });
     }
 
     static function sortByOwners($a, $b): int {
@@ -88,7 +92,10 @@ class Mall
             if($_SESSION['location']) {
                 $distance = max(abs($mall->location->galaxyCoords->x - $_SESSION['location']->x), abs($mall->location->galaxyCoords->y - $_SESSION['location']->y));
             }
-
+            $addon = '';
+            if (isset ($mall->location->groundCoords)) {
+                $addon = '&surfX='.$mall->location->surfaceCoords->x.'&surfY='.$mall->location->surfaceCoords->y.'&groundX='.$mall->location->groundCoords->x.'&groundY='.$mall->location->groundCoords->y;
+            }
             echo '
                 <div class="col-sm-12 col-md-5 col-lg-6 col-xl-4 card p-2 m-2">
                     <div class="card-header bg-light w-100" style="text-align: center;"><h4>'.$mall->container.'</h4></div>
@@ -102,7 +109,7 @@ class Mall
                         </table>
                     </div>
                     <div class="card-footer d-grid w-100" style="text-align: center;">
-                        <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$mall->location->galaxyCoords->x.'&galY='.$mall->location->galaxyCoords->y.'&sysX='.$mall->location->systemCoords->x.'&sysY='.$mall->location->systemCoords->y.'&surfX='.$mall->location->surfaceCoords->x.'&surfY='.$mall->location->surfaceCoords->y.'&groundX='.$mall->location->groundCoords->x.'&groundY='.$mall->location->groundCoords->y.'">
+                        <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$mall->location->galaxyCoords->x.'&galY='.$mall->location->galaxyCoords->y.'&sysX='.$mall->location->systemCoords->x.'&sysY='.$mall->location->systemCoords->y.$addon.'">
                         <button class="btn btn-primary" style="width: 100%">Travel</button></a>
                     </div>
                 </div>
