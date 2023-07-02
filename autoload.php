@@ -11,6 +11,7 @@ include('classes/Mall.php');
 include('classes/Ware.php');
 include('classes/UserInterface.php');
 include('classes/WebService.php');
+include('classes/Crontab.php');
 
 if(isset($_SESSION['handle'])) {
     WebService::updateSession($_SESSION['handle']);

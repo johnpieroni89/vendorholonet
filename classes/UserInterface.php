@@ -11,6 +11,12 @@ class UserInterface
 
     static function printHead() {
         $protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://';
+        if (isset($_SESSION['handle'])) {
+            if($_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
+                error_reporting(E_ALL); 
+                ini_set('display_errors', '1'); 
+            }
+        }
         echo '
             <head>
                 <meta charset="utf-8" />
