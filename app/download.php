@@ -10,6 +10,9 @@ if(isset($_GET['type'])) {
     $wares = Ware::getWaresByType($_GET['type']);
 } elseif(isset($_GET['container_uid'])) {
     $wares = Ware::getWaresByContainer($_GET['container_uid']);
+} elseif(isset($_GET['id'])) {
+    $vendor = Vendor::getVendor($_GET['id']);
+    $wares = Ware::getVendorWares($vendor);
 } else {
     echo "<center><h5><a href='index.php'>Download selected without content, return to home.</a></h5></center>";
 }
