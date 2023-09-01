@@ -193,8 +193,8 @@ class Vendor {
                         </div>
                         <div class="card-footer d-grid w-100" style="text-align: center;">
                             <a target="_blank" href="https://www.swcombine.com/members/cockpit/travel/directed.php?travelClass=2&supplied=1&galX='.$vendor->location->galaxyCoords->x.'&galY='.$vendor->location->galaxyCoords->y.'&sysX='.$vendor->location->systemCoords->x.'&sysY='.$vendor->location->systemCoords->y.$addon.'">
-                            <button class="btn btn-primary" style="width: 100%">Travel</button></a></div>
-                    </div>
+                            <button class="btn btn-primary" style="width: 100%">Travel</button></a>';
+                    echo '<br><form action="download.php"><input type="hidden" name="id" value="'.$_GET['id'].'"><button type="submit" class="btn btn-primary" style="width: 100%" name="download" value="download">Download</button></form></div></div>
                 </div>
             </div>
             <hr/>

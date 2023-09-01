@@ -235,4 +235,42 @@ class Ware {
             </div>
         ';
     }
+
+
+    // Filter the excel data 
+    function filterData(&$str){ 
+        $str = preg_replace("/\t/", "\\t", $str); 
+        $str = preg_replace("/\r?\n/", "\\n", $str); 
+        if(strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"'; 
+    } 
+
+    //save wares in an excel sheet
+    static function saveWareTable($wares) {
+        $delimiter = ","; 
+        $filename = "wares.csv"; 
+
+        // Create a file pointer 
+        $f = fopen('php://memory', 'w'); 
+     
+        // Set column headers 
+        $fields = array('Vendor ID', 'Ware type', 'Ware name', 'Image', 'Quantity', 'Price', 'Vendor name'); 
+        fputcsv($f, $fields, $delimiter); 
+
+        foreach ($wares as $ware) {
+            $vendor = Vendor::getVendor($ware->vendor_id);
+            $lineData = array($ware->vendor_id, $ware->type, $ware->name, $ware->imgSmall, $ware->quantity, $ware->price, $vendor->name); 
+            fputcsv($f, $lineData, $delimiter);
+        }
+        // Move back to beginning of file 
+        fseek($f, 0); 
+        
+        // Set headers to download file rather than displayed 
+        header('Content-Type: text/csv'); 
+        header('Content-Disposition: attachment; filename="' . $filename . '";'); 
+        
+        //output all remaining data on a file pointer 
+        fpassthru($f); 
+
+
+    }
 }
