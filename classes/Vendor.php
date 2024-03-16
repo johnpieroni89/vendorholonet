@@ -84,10 +84,14 @@ class Vendor {
         $owner = mysqli_real_escape_string($db->connection, $owner);
         str_replace('&amp;', '&', $name);
 
-        mysqli_query($db->connection, "INSERT INTO vendors (id, `name`, merchant, merchant_img, description, owner) VALUES ('$id', '$name', '$merchant', '$merchant_img', '$description', '$owner')");
+        $result = mysqli_query($db->connection, "INSERT INTO vendors (id, `name`, merchant, merchant_img, description, owner) VALUES ('$id', '$name', '$merchant', '$merchant_img', '$description', '$owner')");
+        /*if ($result == false) {
+            $message = "Error inputting vendor ".$id." into the database.<br/>";
+            echo $message;
+        }*/
     }
 
-    static function printVendorTable($vendors) {
+    static function printVendorTable($vendors, $galacticLocation=true, $groundLocation=false) {
         echo '
             <div class="card mb-4">
                 <div class="card-header">
@@ -101,8 +105,14 @@ class Vendor {
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Owner</th>
-                                <th>Wares</th>
-                                <th>Distance</th>
+                                <th>Wares</th>';
+                                if ($galacticLocation) {
+                                    echo '<th>Space</th>';
+                                }
+                                if ($groundLocation) {
+                                    echo '<th>Ground</th>';
+                                }
+                                echo '<th>Distance</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -110,8 +120,14 @@ class Vendor {
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Owner</th>
-                                <th>Wares</th>
-                                <th>Distance</th>
+                                <th>Wares</th>';
+                                if ($galacticLocation) {
+                                    echo '<th>Space</th>';
+                                }
+                                if ($groundLocation) {
+                                    echo '<th>Ground</th>';
+                                }
+                                echo '<th>Distance</th>
                             </tr>
                         </tfoot>
                         <tbody>';
@@ -132,8 +148,14 @@ class Vendor {
                         <td>'.$vendor->id.'</td>
                         <td>'.$vendor->name.'</td>
                         <td>'.$vendor->owner.'</td>
-                        <td>'.count($wares).'</td>
-                        <td>'.$distance.'</td>
+                        <td>'.count($wares).'</td>';
+                        if ($galacticLocation) {
+                            echo '<td>'.($vendor->location->galaxyCoords->x ?? "?").', '.($vendor->location->galaxyCoords->y ?? "?").'</td>';
+                        }
+                        if ($groundLocation) {
+                            echo '<td>'.$vendor->location->groundCoords->x.', '.$vendor->location->groundCoords->y.'</td>';
+                        }
+                        echo '<td>'.$distance.'</td>
                     </tr>
                 ';
             }

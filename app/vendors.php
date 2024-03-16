@@ -20,8 +20,13 @@ if(!isset($_SESSION['handle'])) {
                         <h1 class="mt-4">Vendors</h1>
                         <hr/>
                         <?php
-                            if(isset($_GET['container_uid'])) {
-                                Vendor::printVendorTable(Vendor::getAll($_GET['container_uid']));
+                            if(isset($_GET['container_uid'])) { //we're looking at a 'mall'
+                                if (explode(":",$_GET['container_uid'])[0] == 7) { //in a city, get additional ground coordinates
+                                    Vendor::printVendorTable(Vendor::getAll($_GET['container_uid']),false,true);
+                                } else {
+                                    Vendor::printVendorTable(Vendor::getAll($_GET['container_uid']));
+                                }
+                                
                             } else {
                                 Vendor::printVendorTable(Vendor::getAll());
                             }
@@ -55,6 +60,7 @@ if(!isset($_SESSION['handle'])) {
                         } },
                     { data: 'owner' },
                     { data: 'wares', render: DataTable.render.number() },
+                    { data: 'location' },
                     { data: 'distance', render: DataTable.render.number() }
                 ],
                 columnDefs: [{
