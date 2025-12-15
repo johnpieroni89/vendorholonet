@@ -114,9 +114,12 @@ class User {
     static function getLocation(string $uid, string $access_token): ?Point {
         $url = 'https://www.swcombine.com/ws/v2.0/location/characters/'.$uid.'.json';
         $resp = SWC::MakeRequest($url, RequestMethods::Get, ['access_token' => $access_token]);
-        if (!isset($resp->swcapi->location->coordinates->galaxy->attributes)) {
+        if (!isset($resp->swcapi->location)) {
             var_dump($resp);
             throw new Exception("No Location in response of getLocation");
+        }
+        if (!isset($resp->swcapi->location->coordinates->galaxy->attributes)) {
+            return null;
         }
         $location = $resp->swcapi->location->coordinates->galaxy->attributes;
         return new Point($location->x, $location->y);
