@@ -6,7 +6,7 @@ class User {
     public $handle;
     public $access_token;
     public $refresh_token;
-    public $date_registered;
+    public $date_register;
 
     /**
      * conduct SWC Web Services login
@@ -83,8 +83,14 @@ class User {
      */
     static function getUID(string $handle): string {
         $handle = str_replace(' ', '%20', $handle);
-        $resp = json_decode(file_get_contents('https://www.swcombine.com/ws/v2.0/character/handlecheck/'.$handle.'.json'), true);
-        return $resp['swcapi']['character']['uid'];
+        $url = 'https://www.swcombine.com/ws/v2.0/character/handlecheck/'.$handle.'.json';
+
+        $resp = SWC::MakeRequest($url, RequestMethods::Get, []);
+
+        if (!isset($resp->swcapi->character->uid)) {
+            throw new Exception("UID not found in API response for $handle");
+        }
+        return $resp->swcapi->character->uid;
     }
 
     /**
@@ -94,7 +100,8 @@ class User {
      * @return mixed
      */
     static function getCharacter(string $uid, string $access_token) {
-        $resp = json_decode(file_get_contents('https://www.swcombine.com/ws/v2.0/character/'.$uid.'.json?access_token='.$access_token), true);
+        $url = "https://www.swcombine.com/ws/v2.0/character/'.$uid.'.json";
+        $resp = SWC::MakeRequest($url, RequestMethods::Get, ['access_token' => $access_token]);
         return $resp;
     }
 
@@ -105,11 +112,16 @@ class User {
      * @return Point|null
      */
     static function getLocation(string $uid, string $access_token): ?Point {
-        $resp = json_decode(file_get_contents('https://www.swcombine.com/ws/v2.0/location/characters/'.$uid.'.json?access_token='.$access_token), true);
-        if(isset($resp['swcapi']['location']['coordinates']['galaxy']['attributes'])) {
-            $location = $resp['swcapi']['location']['coordinates']['galaxy']['attributes'];
-            return new Point($location['x'], $location['y']);
+        $url = 'https://www.swcombine.com/ws/v2.0/location/characters/'.$uid.'.json';
+        $resp = SWC::MakeRequest($url, RequestMethods::Get, ['access_token' => $access_token]);
+        if (!isset($resp->swcapi->location)) {
+            var_dump($resp);
+            throw new Exception("No Location in response of getLocation");
         }
-        return null;
+        if (!isset($resp->swcapi->location->coordinates->galaxy->attributes)) {
+            return null;
+        }
+        $location = $resp->swcapi->location->coordinates->galaxy->attributes;
+        return new Point($location->x, $location->y);
     }
 }

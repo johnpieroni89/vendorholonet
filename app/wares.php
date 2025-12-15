@@ -45,7 +45,7 @@ if(!isset($_SESSION['handle'])) {
                                 Ware::printWareTable($wares);
                             } elseif(isset($_GET['container_uid'])) {
                                 $wares = Ware::getWaresByContainer($_GET['container_uid']);
-                                echo "<div><form action='download.php'><input type='hidden' name='type' value='".$_GET['type']."'><button type='submit' class='btn btn-primary' name='download' value='download'>Download</button></form></div>";
+                                echo "<div><form action='download.php'><input type='hidden' name='container_uid' value='".$_GET['container_uid']."'><button type='submit' class='btn btn-primary' name='download' value='download'>Download</button></form></div>";
                                 Ware::printWareTable($wares);
                             } else {
                                 echo '<center><h5>Please select a type in the form above!</h5></center>';

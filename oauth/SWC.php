@@ -56,15 +56,19 @@ class SWC {
      */
     public function AttemptAuthorize(array $scopes, $state = null, $renew = true) {
         $url = OAUTH_ENDPOINT_AUTH.'?response_type=code'.
-                        '&client_id='.$this->client_id.
-                        '&scope='.implode(' ', $scopes).
-                        '&redirect_uri='.$this->redirect_uri.
-                        '&state='.urlencode($state).
-                        '&access_type='.$this->access_type;
+                        '&client_id='.urlencode($this->client_id).
+                        '&scope='.urlencode(implode(' ', $scopes)).
+                        '&redirect_uri='.urlencode($this->redirect_uri).
+                        '&state='.urlencode($state ?? '').
+                        '&access_type='.urlencode($this->access_type);
         if($renew) {
             $url .= '&renew_previously_granted=yes';
         }
-        header('Accept: '.ContentTypes::JSON);
+            // Clear any previous output to avoid header issues
+        if (ob_get_length()) {
+            ob_end_clean();
+        }
+        //header('Accept: '.ContentTypes::JSON);
         header('location: '.$url);
     }
 
@@ -159,9 +163,10 @@ class SWC {
      * @param array $values Any parameters to include in the request, where the Key is the parameter name and Value is the parameter value.
      * If successful returns a instance of TValue
      */
-    private static function MakeRequest($uri, $method, array $values) {
+    public static function MakeRequest($uri, $method, array $values) {
         $body = http_build_query($values);
         $headers = array('accept: '.ContentTypes::JSON);
+        $headers[] = 'User-Agent: SWC API Client';
         // open connection
         $ch = curl_init();
 

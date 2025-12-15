@@ -167,6 +167,10 @@ class Ware {
         $type = mysqli_real_escape_string($db->connection, ucfirst($type));
         $name = mysqli_real_escape_string($db->connection, $name);
         $quantity = mysqli_real_escape_string($db->connection, $quantity);
+        if ($price > 2000000000) {
+            echo "<br>Skipping $name from vendor ID $vendor_id with price of $price.";
+            return false;
+        }
         $price = mysqli_real_escape_string($db->connection, $price);
         $currency = mysqli_real_escape_string($db->connection, $currency);
         $imgSmall = mysqli_real_escape_string($db->connection, $imgSmall);
@@ -214,6 +218,7 @@ class Ware {
             $vendor = Vendor::getVendor($ware->vendor_id);
             if($_SESSION['location']) {
                 $distance = max(abs($vendor->location->galaxyCoords->x - $_SESSION['location']->x), abs($vendor->location->galaxyCoords->y - $_SESSION['location']->y));
+                //$distance = str_pad($distance,3,0,STR_PAD_LEFT);
             }
             echo '
                 <tr>
