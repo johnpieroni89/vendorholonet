@@ -1,6 +1,11 @@
 <?php
 date_default_timezone_set('America/Chicago');
-session_start();
+/*ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);*/
+if (!headers_sent() && session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 include('config.php');
 include('classes/Database.php');
 
@@ -12,7 +17,13 @@ include('classes/Ware.php');
 include('classes/UserInterface.php');
 include('classes/WebService.php');
 include('classes/Crontab.php');
-
+include('oauth/AuthorizationResult.php');
+include('oauth/ContentTypes.php');
+include('oauth/GrantTypes.php');
+include('oauth/OAuthToken.php');
+include('oauth/RequestMethods.php');
+include('oauth/SWC.php');
+include('oauth/SWCombineWSException.php');
 if(isset($_SESSION['handle'])) {
     WebService::updateSession($_SESSION['handle']);
     $user = User::getUser($_SESSION['handle']);
@@ -28,12 +39,6 @@ if(isset($_SESSION['handle'])) {
     $user = null;
 }
 
-include('oauth/AuthorizationResult.php');
-include('oauth/ContentTypes.php');
-include('oauth/GrantTypes.php');
-include('oauth/OAuthToken.php');
-include('oauth/RequestMethods.php');
-include('oauth/SWC.php');
-include('oauth/SWCombineWSException.php');
+
 
 ?>

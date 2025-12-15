@@ -1,8 +1,15 @@
 <?php
-
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 include('../autoload.php');
 
-if($_GET['code']) {
+if (isset($_GET['code'])) {
+
+    /* =====================
+     * OAuth token exchange
+     * ===================== */
+
     $url = 'https://www.swcombine.com/ws/oauth2/token/';
     $data = array(
         'code' => $_GET['code'],
@@ -13,29 +20,75 @@ if($_GET['code']) {
         'access_type' => 'offline'
     );
 
-    // use key 'http' even if you send the request to https://...
-    $options = array(
-        'http' => array(
-            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method' => 'POST',
-            'content' => http_build_query($data)
-        )
-    );
-    $context = stream_context_create($options);
-    $result = simplexml_load_string(file_get_contents($url, false, $context));
-    $result = json_encode($result);
-    $result = json_decode($result);
-    $access_token = $result->access_token;
-    $refresh_token = $result->refresh_token;
+    $ch = curl_init($url);
+
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST           => true,
+        CURLOPT_POSTFIELDS     => http_build_query($data),
+        CURLOPT_HTTPHEADER     => [
+            'Accept: application/json',
+            'Content-Type: application/x-www-form-urlencoded',
+            'User-Agent: SWC OAuth Client'
+        ],
+    ]);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        die('cURL error (token): ' . curl_error($ch));
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        die("OAuth HTTP $httpCode response:\n$response");
+    }
+
+    $tokenResult = json_decode($response);
+
+    if (!isset($tokenResult->access_token)) {
+        die('Invalid OAuth response: ' . $response);
+    }
+
+    $access_token  = $tokenResult->access_token;
+    $refresh_token = $tokenResult->refresh_token ?? null;
 }
 
-if($result){
-    $url = 'https://www.swcombine.com/ws/v2.0/character/?access_token='.$result->access_token;
-    $result = simplexml_load_string(file_get_contents($url, false));
-    $result = json_encode($result);
-    $result = json_decode($result);
-    $username = $result->character->name;
+if (!empty($access_token)) {
+
+    $url = 'https://www.swcombine.com/ws/v2.0/character/?access_token=' . urlencode($access_token);
+
+    $ch = curl_init($url);
+
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER     => [
+            'Accept: application/json',
+            'User-Agent: SWC OAuth Client'
+        ],
+    ]);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        die('cURL error (character): ' . curl_error($ch));
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        die("Character API HTTP $httpCode response:\n$response");
+    }
+
+    $charResult = json_decode($response);
+
+    if (!isset($charResult->swcapi->character->name)) {
+        die('Invalid character API response: ' . $response);
+    }
+    
+    $username = $charResult->swcapi->character->name;
     User::oAuthLogin($username, $access_token, $refresh_token);
 }
-
-?>
