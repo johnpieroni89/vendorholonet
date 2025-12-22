@@ -6,15 +6,26 @@ class CronTab {
         // Get the current crontab file
         $cmd = 'crontab -l';
         $current_crontab = shell_exec($cmd);
-        //echo "<br>Current crontab: ".$current_crontab;
+        //echo "<pre>Current crontab:\n ".htmlspecialchars($current_crontab) . "</pre>";
 
         // Modify the crontab file (e.g. remove a specific line)
         if ($schedule == '') { //match command only with any schedule
-            $new_crontab = preg_replace('/^\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+' . preg_quote($command, '/') . '\s*$/m', '', $current_crontab);
+            $pattern = '/^(\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+).*' . preg_quote($command, '/') . '.*$/m';
+            //echo "<pre>Pattern: " . htmlspecialchars($pattern) . "</pre>";
+
+            $new_crontab = preg_replace($pattern, '', $current_crontab);
         } else {
             $new_crontab = str_replace($schedule.' '.$command, '', $current_crontab);
         }
-        //echo "<br>New crontab: ".$new_crontab;
+        // Remove double or trailing SHELL lines
+        $new_crontab = preg_replace('/^SHELL="[^"]*"\n(?=SHELL=)/m', '', $new_crontab); // Remove SHELL followed by another SHELL
+        $new_crontab = preg_replace('/^SHELL="[^"]*"\n*$/m', '', $new_crontab); // Remove SHELL at end of file
+        
+        //echo "<pre>New crontab:\n" . htmlspecialchars($new_crontab) . "</pre>";
+
+        if ($current_crontab === $new_crontab) {
+            echo "<strong>WARNING: No changes detected!</strong><br>";
+        }
 
         // Save the modified crontab file to a temporary file
         $temp_file = tempnam(sys_get_temp_dir(), 'crontab_');
