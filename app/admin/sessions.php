@@ -21,6 +21,9 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
         <main>
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Sessions</h1>
+                <a href="index.php" class="btn btn-primary">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Admin Panel
+                </a>
                 <hr/>
                 <?php
                     $db = new Database();

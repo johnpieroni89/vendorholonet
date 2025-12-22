@@ -36,10 +36,6 @@ class SWC {
         $this->redirect_uri = SWC_API_REDIRECT_URI;
         $this->access_type = $isOffline ? "offline" : "online";
     }
-        
-    public function set_user($user) {
-        $this->user = $user;
-    }
 
     public function get_token() {
         return $this->token;
@@ -163,12 +159,25 @@ class SWC {
      * @param array $values Any parameters to include in the request, where the Key is the parameter name and Value is the parameter value.
      * If successful returns a instance of TValue
      */
-    public static function MakeRequest($uri, $method, array $values) {
+    public static function MakeRequest($uri, $method, array $values, bool $debug = false) {
+        if ($debug) {
+            error_log("[" . date('Y-m-d H:i:s') . "] About to build query".PHP_EOL, 3, LOGFILE);
+        }
         $body = http_build_query($values);
+        if ($debug) {
+            error_log("[" . date('Y-m-d H:i:s') . "] Returned from building query".PHP_EOL, 3, LOGFILE);
+        }
+
         $headers = array('accept: '.ContentTypes::JSON);
         $headers[] = 'User-Agent: SWC API Client';
         // open connection
+        if ($debug) {
+            error_log("[" . date('Y-m-d H:i:s') . "] Before curl_init".PHP_EOL, 3, LOGFILE);
+        }
         $ch = curl_init();
+        if ($debug) {
+            error_log("[" . date('Y-m-d H:i:s') . "] After curl_init".PHP_EOL, 3, LOGFILE);
+        }
 
         if ($method == RequestMethods::Get) {
                 // values should be query parameters so update uri
@@ -180,6 +189,14 @@ class SWC {
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
         }
         // set url and headers
+        if ($debug) {
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+            //curl_setopt($ch, CURLOPT_STDERR, fopen(LOGFILE, 'a'));
+        }
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+        curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+
         curl_setopt($ch, CURLOPT_URL, $uri);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -200,7 +217,13 @@ class SWC {
                 break;
         }
         // execute
+        if ($debug) {
+            error_log("[" . date('Y-m-d H:i:s') . "] About to call curl".PHP_EOL, 3, LOGFILE);
+        }
         $response = curl_exec($ch);
+        if ($debug) {
+            error_log("[" . date('Y-m-d H:i:s') . "] Returned from curl".PHP_EOL, 3, LOGFILE);
+        }
         // close connection
         curl_close($ch);
 

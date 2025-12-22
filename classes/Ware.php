@@ -169,6 +169,7 @@ class Ware {
         $quantity = mysqli_real_escape_string($db->connection, $quantity);
         if ($price > 2000000000) {
             echo "<br>Skipping $name from vendor ID $vendor_id with price of $price.";
+            error_log("Error parsing ware: $price out of bounds".PHP_EOL, 3, LOGFILE);
             return false;
         }
         $price = mysqli_real_escape_string($db->connection, $price);

@@ -27,6 +27,7 @@ if(!$_SESSION['handle'] == CONFIG_GLOBAL_ADMIN) {
                         <a href="sessions.php"><button class="btn btn-lg btn-primary"><i class="fa-solid fa-users-viewfinder"></i> Sessions</button></a>
                         <a href="updateVendorsManual.php"><button class="btn btn-lg btn-primary"><i class="fa-solid fa-arrows-rotate"></i> Update info</button></a>
                         <a href="cronTab.php"><button class="btn btn-lg btn-primary"><i class="fa-solid fa-clock-rotate-left"></i> Crontab</button></a>
+                        <a href="displayLogfile.php"><button class="btn btn-lg btn-primary"><i class="fa-solid fa-list"></i> Log file</button></a>
                     </div>
                 </div>
             </div>
