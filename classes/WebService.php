@@ -3,75 +3,98 @@
 class WebService {
     const VENDOR_API = 'https://www.swcombine.com/ws/v2.0/market/vendors.json';
 
-    /**
-     * return data from swc api endpoint
-     * @param string $url
-     */
-    function fetch_api(string $url) {
-        //return json_decode(file_get_contents($url), true);
-        return SWC::MakeRequest($url, RequestMethods::Get, []);
-    }
-
     function updateVendorList()
     {
-        Vendor::deleteAll();
-        Location::deleteAll();
-        Ware::deleteAll();
-        $resp = $this->fetch_api(self::VENDOR_API);
-        $resp = $resp->swcapi->vendors;
-        $total = $resp->attributes->total;
-        $count = $resp->attributes->count;
-        $start = $resp->attributes->start;
+        try {
+            Vendor::deleteAll();
+            Location::deleteAll();
+            Ware::deleteAll();
+            error_log("[" . date('Y-m-d H:i:s') . "] Scrubbed database of vendors, wares and locations".PHP_EOL, 3, LOGFILE);
+        } catch (Exception $d) {
+            error_log("[" . date('Y-m-d H:i:s') . "] Error deleting vendors, wares and locations: ".$d->getMessage().PHP_EOL, 3, LOGFILE);
+        }
 
-        while(($start - 1) + $count <= $total) {
-            foreach ($resp->vendor as $vendor) {
-                $vendor_id = $vendor->attributes->id;
-                $vendor_resp = $this->fetch_api(self::VENDOR_API . '/' . $vendor_id .'.json');
-                $vendor_data = $vendor_resp->swcapi->vendor;
-
-                if (is_string($vendor_data->description)) {
-                    Vendor::parseVendor($vendor_id, $vendor_data->name, $vendor_data->shopkeeper->name, $vendor_data->shopkeeper->images->small, $vendor_data->description, $vendor_data->owner->value);
-                } else {
-                    Vendor::parseVendor($vendor_id, $vendor_data->name, $vendor_data->shopkeeper->name, $vendor_data->shopkeeper->images->small, '', $vendor_data->owner->value);
-                }
-
-                $location = $vendor_data->location;
-                $coords = $location->coordinates;
-                (isset($location->container->value)) ? $container = $location->container->value : $container = '';
-                (isset($location->container->attributes->uid)) ? $container_uid = $location->container->attributes->uid : $container_uid = '';
-                (isset($location->sector->value)) ? $sector = $location->sector->value : $sector = '';
-                (isset($location->system->value)) ? $system = $location->system->value : $system = '';
-                (isset($location->planet->value)) ? $planet = $location->planet->value : $planet = '';
-                (isset($location->city->value)) ? $city = $location->city->value : $city = '';
-                (isset($location->city->attributes->uid)) ? $city_uid = $location->city->attributes->uid : $city_uid = '';
-                (isset($coords->galaxy->attributes->x)) ? $galx = $coords->galaxy->attributes->x : $galx = '';
-                (isset($coords->galaxy->attributes->y)) ? $galy = $coords->galaxy->attributes->y : $galy = '';
-                (isset($coords->system->attributes->x)) ? $sysx = $coords->system->attributes->x : $sysx = '';
-                (isset($coords->system->attributes->y)) ? $sysy = $coords->system->attributes->y : $sysy = '';
-                (isset($coords->surface->attributes->x)) ? $surfx = $coords->surface->attributes->x : $surfx = '';
-                (isset($coords->surface->attributes->y)) ? $surfy = $coords->surface->attributes->y : $surfy = '';
-                (isset($coords->ground->attributes->x)) ? $groundx = $coords->ground->attributes->x : $groundx = '';
-                (isset($coords->ground->attributes->y)) ? $groundy = $coords->ground->attributes->y : $groundy = '';
-                Location::parseLocation(
-                    $vendor_id, $container, $container_uid, $sector, $system, $planet, $city, $city_uid,
-                    $galx, $galy, $sysx, $sysy, $surfx, $surfy, $groundx, $groundy
-                );
-
-                foreach ($vendor_data->wares->ware as $ware) {
-                    if ($ware) {
-                        if ($vendor_id && isset($ware->type) && $ware->quantity && $ware->price && $ware->currency && $ware->images->small && $ware->images->large) {
-                            $quantity = str_replace(',', '', $ware->quantity);
-                            Ware::parseWare($vendor_id, $ware->type, $ware->name, $quantity, $ware->price, $ware->currency, $ware->images->small, $ware->images->large);
-                        }
-                    }
-                }
-            }
-
-            $resp = SWC::MakeRequest(self::VENDOR_API.'.json', RequestMethods::Get, ['start_index' => ($start + 50)]);
+        try {
+            error_log("[" . date('Y-m-d H:i:s') . "] Fetching initial response".PHP_EOL, 3, LOGFILE);
+            $resp = SWC::MakeRequest(self::VENDOR_API, RequestMethods::Get, [], false);
             $resp = $resp->swcapi->vendors;
             $total = $resp->attributes->total;
             $count = $resp->attributes->count;
             $start = $resp->attributes->start;
+            error_log("[" . date('Y-m-d H:i:s') . "] Fetched initial response - $total total vendors".PHP_EOL, 3, LOGFILE);
+        } catch (Exception $f) {
+            error_log("[" . date('Y-m-d H:i:s') . "] Error fetching initial response: ".$f->getMessage().PHP_EOL, 3, LOGFILE);
+        }
+        
+        while(($start - 1) + $count <= $total) {
+            foreach ($resp->vendor as $vendor) {
+                try {
+                    $vendor_id = $vendor->attributes->id;
+                    $vendor_resp = SWC::MakeRequest(self::VENDOR_API . '/' . $vendor_id .'.json', RequestMethods::Get, [], false);
+                    $vendor_data = $vendor_resp->swcapi->vendor;
+                } catch(Exception $v) {
+                    error_log("[" . date('Y-m-d H:i:s') . "] Error fetching vendor: ".$v->getMessage().PHP_EOL, 3, LOGFILE);
+                }
+                
+                try {                    
+                    if (is_string($vendor_data->description)) {
+                        Vendor::parseVendor($vendor_id, $vendor_data->name, $vendor_data->shopkeeper->name, $vendor_data->shopkeeper->images->small, $vendor_data->description, $vendor_data->owner->value);
+                    } else {
+                        Vendor::parseVendor($vendor_id, $vendor_data->name, $vendor_data->shopkeeper->name, $vendor_data->shopkeeper->images->small, '', $vendor_data->owner->value);
+                    }
+                } catch(Exception $vp) {
+                    error_log("[" . date('Y-m-d H:i:s') . "] Error parsing vendor: ".$vp->getMessage().PHP_EOL, 3, LOGFILE);
+                }
+
+                try {
+                    $location = $vendor_data->location;
+                    $coords = $location->coordinates;
+                    (isset($location->container->value)) ? $container = $location->container->value : $container = '';
+                    (isset($location->container->attributes->uid)) ? $container_uid = $location->container->attributes->uid : $container_uid = '';
+                    (isset($location->sector->value)) ? $sector = $location->sector->value : $sector = '';
+                    (isset($location->system->value)) ? $system = $location->system->value : $system = '';
+                    (isset($location->planet->value)) ? $planet = $location->planet->value : $planet = '';
+                    (isset($location->city->value)) ? $city = $location->city->value : $city = '';
+                    (isset($location->city->attributes->uid)) ? $city_uid = $location->city->attributes->uid : $city_uid = '';
+                    (isset($coords->galaxy->attributes->x)) ? $galx = $coords->galaxy->attributes->x : $galx = '';
+                    (isset($coords->galaxy->attributes->y)) ? $galy = $coords->galaxy->attributes->y : $galy = '';
+                    (isset($coords->system->attributes->x)) ? $sysx = $coords->system->attributes->x : $sysx = '';
+                    (isset($coords->system->attributes->y)) ? $sysy = $coords->system->attributes->y : $sysy = '';
+                    (isset($coords->surface->attributes->x)) ? $surfx = $coords->surface->attributes->x : $surfx = '';
+                    (isset($coords->surface->attributes->y)) ? $surfy = $coords->surface->attributes->y : $surfy = '';
+                    (isset($coords->ground->attributes->x)) ? $groundx = $coords->ground->attributes->x : $groundx = '';
+                    (isset($coords->ground->attributes->y)) ? $groundy = $coords->ground->attributes->y : $groundy = '';
+                    Location::parseLocation(
+                        $vendor_id, $container, $container_uid, $sector, $system, $planet, $city, $city_uid,
+                        $galx, $galy, $sysx, $sysy, $surfx, $surfy, $groundx, $groundy
+                    );
+                } catch(Exception $l) {
+                    error_log("[" . date('Y-m-d H:i:s') . "] Error parsing location: ".$l->getMessage().PHP_EOL, 3, LOGFILE);
+                }
+
+                foreach ($vendor_data->wares->ware as $ware) {
+                    try {
+                        if ($ware) {
+                            if ($vendor_id && isset($ware->type) && $ware->quantity && $ware->price && $ware->currency && $ware->images->small && $ware->images->large) {
+                                $quantity = str_replace(',', '', $ware->quantity);
+                                Ware::parseWare($vendor_id, $ware->type, $ware->name, $quantity, $ware->price, $ware->currency, $ware->images->small, $ware->images->large);
+                            }
+                        }
+                    } catch(Exception $w) {
+                        error_log("[" . date('Y-m-d H:i:s') . "] Error parsing ware: ".$w->getMessage().PHP_EOL, 3, LOGFILE);
+                    }
+                }
+            }
+            try {
+                $resp = SWC::MakeRequest(self::VENDOR_API.'.json', RequestMethods::Get, ['start_index' => ($start + 50)]);
+                $resp = $resp->swcapi->vendors;
+                $total = $resp->attributes->total;
+                $count = $resp->attributes->count;
+                $start = $resp->attributes->start;
+                error_log("[" . date('Y-m-d H:i:s') . "] Fetched responses starting at $start".PHP_EOL, 3, LOGFILE);
+            } catch(Exception $n) {
+                error_log("[" . date('Y-m-d H:i:s') . "] Error fetching next response: ".$n->getMessage().PHP_EOL, 3, LOGFILE);
+            }
         }
     }
 
